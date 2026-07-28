@@ -2,12 +2,13 @@
 .idea/
 *.iml
 
-# Eclipse
-.project
-.settings/
-
 # VS Code
 .vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
 
 # Maven
 target/
@@ -19,6 +20,16 @@ target/
 Thumbs.db
 .DS_Store
 
-# Ignore accidental files
-mvn
-[Help
+# Logs
+*.log
+
+# Environment / Secrets
+.env
+application.properties
+
+# MySQL local files (if accidentally created)
+*.sql
+*.db
+
+# Maven wrapper generated files (optional)
+.mvn/wrapper/maven-wrapper.jar
