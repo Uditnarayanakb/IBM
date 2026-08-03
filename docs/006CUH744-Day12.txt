@@ -1,0 +1,2505 @@
+===============================================================================
+DAY 12 - 31 JULY 2026
+===============================================================================
+
+###############################################################################
+TASK 1
+WHY IS THERE A NEED FOR DBMS?
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A Database Management System (DBMS) is software that enables users to store,
+manage, retrieve, secure, and manipulate data efficiently.
+
+As organizations grow, the amount of data increases rapidly. Managing such
+data using simple text files becomes difficult and error-prone. DBMS solves
+these challenges by providing a structured and centralized data management
+environment.
+
+WHY DBMS IS REQUIRED
+-------------------------------------------------------------------------------
+Modern applications require:
+
+* Storage of large amounts of data
+* Fast retrieval of information
+* Multi-user support
+* Security and authorization
+* Data integrity
+* Backup and recovery
+* High availability
+
+Without DBMS, these requirements are difficult to implement reliably.
+
+PROBLEMS SOLVED BY DBMS
+-------------------------------------------------------------------------------
+
++---------------------------------------------------------------------+
+|                      CHALLENGES WITHOUT DBMS                         |
++---------------------------------------------------------------------+
+|                                                                     |
+|  Duplicate Data                                                     |
+|       |                                                             |
+|       v                                                             |
+|  Data Inconsistency                                                 |
+|       |                                                             |
+|       v                                                             |
+|  Security Issues                                                    |
+|       |                                                             |
+|       v                                                             |
+|  Difficult Data Retrieval                                           |
+|       |                                                             |
+|       v                                                             |
+|  Poor Maintenance                                                   |
+|                                                                     |
++---------------------------------------------------------------------+
+
+DBMS SOLUTION
+-------------------------------------------------------------------------------
+
+                        +------------------+
+                        |      USERS       |
+                        +------------------+
+                                  |
+                                  v
+                        +------------------+
+                        |       DBMS       |
+                        +------------------+
+                           /      |      \
+                          /       |       \
+                         /        |        \
+                        v         v         v
+
+                +---------+   +--------+   +--------+
+                | Customer|   | Orders |   | Payment|
+                +---------+   +--------+   +--------+
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+Consider an online shopping platform.
+
+Without DBMS:
+- Customer details stored in many files
+- Duplicate customer records
+- Difficult order tracking
+
+With DBMS:
+- Customer stored once
+- Orders linked through relationships
+- Faster search and reporting
+
+ADVANTAGES
+-------------------------------------------------------------------------------
++ Reduced data redundancy
++ Improved consistency
++ Better security
++ Concurrent access support
++ Data backup and recovery
++ Improved data integrity
+
+LIMITATIONS
+-------------------------------------------------------------------------------
+- Requires administration
+- Setup cost can be high
+- More complex than file systems
+
+SUMMARY
+-------------------------------------------------------------------------------
+DBMS provides a centralized mechanism to store, secure, retrieve, manage, and
+share data efficiently while maintaining consistency and integrity.
+
+
+###############################################################################
+TASK 2
+WHY NOT TRADITIONAL FILE SYSTEM?
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Traditional file systems store information in separate files. Although simple,
+they become difficult to manage as data volume and complexity increase.
+
+ARCHITECTURE
+-------------------------------------------------------------------------------
+
++---------------------+
+| Student.txt         |
++---------------------+
+
++---------------------+
+| Department.txt      |
++---------------------+
+
++---------------------+
+| Fees.txt            |
++---------------------+
+
++---------------------+
+| Attendance.txt      |
++---------------------+
+
+Every file is isolated.
+
+MAJOR LIMITATIONS
+-------------------------------------------------------------------------------
+
+1. DATA REDUNDANCY
+
+Same information appears in multiple files.
+
+Example:
+
+Student.txt
+------------
+101 Alice
+
+Fees.txt
+---------
+101 Alice
+
+Attendance.txt
+---------------
+101 Alice
+
+Result:
+Same data repeated multiple times.
+
+2. DATA INCONSISTENCY
+
+Suppose name changes from:
+
+Alice -> Alicia
+
+If only one file is updated:
+
+Student.txt     = Alicia
+Fees.txt        = Alice
+
+Database becomes inconsistent.
+
+3. DATA ISOLATION
+
+Information exists in multiple files with different structures.
+
+Finding combined information becomes difficult.
+
+4. POOR SECURITY
+
+Most basic file systems provide limited control over access.
+
+5. DIFFICULT BACKUP
+
+Recovery after failures is often manual.
+
+6. NO CONCURRENCY CONTROL
+
+Multiple users may overwrite each other's changes.
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+A college stores student records using text files.
+
+Different departments keep separate copies.
+
+Whenever student information changes, every file must be updated.
+
+This frequently creates inconsistencies.
+
+TRADITIONAL FILE SYSTEM VS DBMS
+-------------------------------------------------------------------------------
+
++----------------------+----------------------+----------------------+
+| Feature              | File System          | DBMS                 |
++----------------------+----------------------+----------------------+
+| Redundancy           | High                 | Low                  |
+| Consistency          | Poor                 | High                 |
+| Security             | Limited              | Strong               |
+| Backup               | Manual               | Automated            |
+| Concurrent Access    | Weak                 | Strong               |
+| Relationships        | Difficult            | Built-In             |
++----------------------+----------------------+----------------------+
+
+SUMMARY
+-------------------------------------------------------------------------------
+Traditional file systems are suitable for small standalone applications but do
+not scale well for modern enterprise systems.
+
+
+###############################################################################
+TASK 3
+DATA INDEPENDENCE IN DBMS
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Data Independence refers to the ability to modify the schema at one level
+without affecting higher levels.
+
+It enables database changes without requiring application rewrites.
+
+THREE-SCHEMA ARCHITECTURE
+-------------------------------------------------------------------------------
+
++------------------------------------------------+
+| EXTERNAL LEVEL                                 |
+| User Views                                     |
++------------------------------------------------+
+                     |
+                     v
++------------------------------------------------+
+| CONCEPTUAL LEVEL                               |
+| Logical Structure of Database                  |
++------------------------------------------------+
+                     |
+                     v
++------------------------------------------------+
+| INTERNAL LEVEL                                 |
+| Physical Storage Details                       |
++------------------------------------------------+
+
+TYPES OF DATA INDEPENDENCE
+-------------------------------------------------------------------------------
+
+1. LOGICAL DATA INDEPENDENCE
+
+Definition:
+Ability to change logical structure without affecting user views.
+
+Examples:
+- Add new columns
+- Split tables
+- Merge tables
+
+Example:
+
+Before:
+Employee(EmpID, Name)
+
+After:
+Employee(EmpID, Name, Email)
+
+Applications using EmpID and Name continue working.
+
+2. PHYSICAL DATA INDEPENDENCE
+
+Definition:
+Ability to change storage mechanisms without affecting logical structure.
+
+Examples:
+- HDD -> SSD
+- Add index
+- Move files
+- Partition tables
+
+Applications remain unchanged.
+
+WHY IT IS IMPORTANT
+-------------------------------------------------------------------------------
+
++ Easier maintenance
++ Reduced development effort
++ Better scalability
++ Technology upgrades become simpler
+
+SUMMARY
+-------------------------------------------------------------------------------
+Data independence separates applications from database structure changes,
+making systems easier to maintain and evolve.
+
+
+###############################################################################
+TASK 4
+DATABASE MODELS
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A database model defines how data is organized, stored, and related.
+
+MAIN DATABASE MODELS
+-------------------------------------------------------------------------------
+
+1. HIERARCHICAL MODEL
+2. NETWORK MODEL
+3. RELATIONAL MODEL
+4. OBJECT-ORIENTED MODEL
+
+
+1. HIERARCHICAL MODEL
+-------------------------------------------------------------------------------
+
+Structure: Tree
+
+                COMPANY
+                    |
+                    |
+            +-------+-------+
+            |               |
+            v               v
+
+        FINANCE          HR
+            |
+            v
+
+       EMPLOYEE
+
+CHARACTERISTICS
+-------------------------------------------------------------------------------
++ Parent-Child Relationship
++ One Parent
++ Many Children
+
+ADVANTAGES
+-------------------------------------------------------------------------------
++ Simple Structure
++ Fast Navigation
+
+DISADVANTAGES
+-------------------------------------------------------------------------------
+- Rigid
+- Difficult Many-to-Many Relationships
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+Organization Chart
+
+
+2. NETWORK MODEL
+-------------------------------------------------------------------------------
+
+                COURSE 1
+               /        \
+              /          \
+             /            \
+        STUDENT A      STUDENT B
+             \            /
+              \          /
+               \        /
+                COURSE 2
+
+CHARACTERISTICS
+-------------------------------------------------------------------------------
++ Multiple Parents
++ Many-to-Many Relationships
+
+ADVANTAGES
+-------------------------------------------------------------------------------
++ Flexible
++ Efficient Relationships
+
+DISADVANTAGES
+-------------------------------------------------------------------------------
+- Complex Design
+- Difficult Maintenance
+
+
+3. RELATIONAL MODEL
+-------------------------------------------------------------------------------
+
+CUSTOMER
+
++----+--------+
+| ID | Name   |
++----+--------+
+
+ORDER
+
++---------+-------------+
+| OrderID | CustomerID  |
++---------+-------------+
+
+Relationship established through keys.
+
+
+ADVANTAGES
+-------------------------------------------------------------------------------
++ SQL Support
++ Easy Querying
++ Strong Integrity Rules
+
+DISADVANTAGES
+-------------------------------------------------------------------------------
+- Can become expensive at huge scale
+
+
+4. OBJECT ORIENTED MODEL
+-------------------------------------------------------------------------------
+
+Class Employee
+
++-----------------------------+
+| Employee                    |
++-----------------------------+
+| EmpID                       |
+| Name                        |
++-----------------------------+
+| CalculateSalary()           |
++-----------------------------+
+
+Stores both data and behavior.
+
+SUMMARY
+-------------------------------------------------------------------------------
+Different database models solve different business requirements. Relational
+model is the most widely used today.
+
+
+###############################################################################
+TASK 5
+CONCURRENCY CONTROL IN DBMS
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Concurrency Control ensures correct execution of multiple transactions
+simultaneously without compromising database integrity.
+
+PROBLEM SCENARIO
+-------------------------------------------------------------------------------
+
+User A Withdraws ₹100
+
+AND
+
+User B Withdraws ₹100
+
+At the same time
+
+Potential Result:
+Incorrect Account Balance
+
+COMMON PROBLEMS
+-------------------------------------------------------------------------------
+
+1. LOST UPDATE
+
+Initial Balance = 1000
+
+Transaction A reads = 1000
+Transaction B reads = 1000
+
+A updates = 900
+B updates = 900
+
+Expected = 800
+
+Actual = 900
+
+Update from A is lost.
+
+2. DIRTY READ
+
+Transaction A updates balance
+Transaction B reads balance
+
+Transaction A rolls back
+
+Transaction B used invalid data.
+
+3. UNREPEATABLE READ
+
+Same record read twice produces different values.
+
+CONCURRENCY CONTROL METHODS
+-------------------------------------------------------------------------------
+
+LOCK BASED METHOD
+
+READ LOCK
+WRITE LOCK
+
+TIMESTAMP METHOD
+
+Older transactions get priority.
+
+OPTIMISTIC METHOD
+
+No locks initially.
+Validation performed before commit.
+
+WHY IT IS IMPORTANT
+-------------------------------------------------------------------------------
+
++ Prevents corruption
++ Guarantees isolation
++ Maintains consistency
++ Supports multiple users
+
+SUMMARY
+-------------------------------------------------------------------------------
+Concurrency Control allows many users to safely access and modify data
+simultaneously while maintaining correctness.
+
+
+###############################################################################
+TASK 6
+INDEXES IN DBMS
+###############################################################################
+
+OVERVIEW
+-------------------------------------------------------------------------------
+An index is a special lookup structure that improves retrieval speed.
+
+REAL WORLD ANALOGY
+-------------------------------------------------------------------------------
+
+Book Search Without Index
+
+Page 1
+Page 2
+Page 3
+...
+Page 1000
+
+Book Search With Index
+
+Database ............ Page 100
+Index ............... Page 250
+SQL ................. Page 420
+
+Search becomes faster.
+
+INTERNAL STRUCTURE
+-------------------------------------------------------------------------------
+
+                [500]
+               /     \
+          [200]      [800]
+          /  \        /  \
+      [100][300] [700][900]
+
+This is similar to a B-Tree.
+
+###############################################################################
+TASK 7
+DEADLOCK IN DBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What is a Deadlock in DBMS? Explain deadlock prevention and detection.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A deadlock occurs when two or more transactions are permanently blocked because
+each transaction is waiting for a resource currently held by another
+transaction.
+
+In simple words:
+
+Transaction A waits for Transaction B
+
+AND
+
+Transaction B waits for Transaction A
+
+Neither transaction can continue.
+
+This situation is called a DEADLOCK.
+
+REAL WORLD ANALOGY
+-------------------------------------------------------------------------------
+
+Imagine two cars entering a narrow bridge from opposite sides.
+
+Car A waits for Car B to reverse.
+
+Car B waits for Car A to reverse.
+
+Neither driver moves.
+
+Traffic becomes completely stuck.
+
+This is exactly how a deadlock works.
+
+VISUAL REPRESENTATION
+-------------------------------------------------------------------------------
+
+                   Waiting For
+         +------------------------------+
+         |                              |
+         v                              |
+
+   +-------------+                +-------------+
+   | Transaction |                | Transaction |
+   |      A      |                |      B      |
+   +-------------+                +-------------+
+         ^                              |
+         |                              |
+         +------------------------------+
+                   Waiting For
+
+
+DATABASE EXAMPLE
+-------------------------------------------------------------------------------
+
+Step 1:
+Transaction A locks Employee Table.
+
+Step 2:
+Transaction B locks Department Table.
+
+Step 3:
+Transaction A requests Department Table.
+
+Step 4:
+Transaction B requests Employee Table.
+
+Result:
+
+Transaction A waits for B
+
+Transaction B waits for A
+
+Deadlock occurs.
+
+RESOURCE ALLOCATION VIEW
+-------------------------------------------------------------------------------
+
+Transaction A
+      |
+      | Holds
+      v
+
++-------------+
+| Resource X  |
++-------------+
+
+      ^
+      |
+Needs |
+
++-------------+
+| Resource Y  |
++-------------+
+
+      ^
+      |
+Holds |
+
+Transaction B
+
+DEADLOCK CONDITIONS
+-------------------------------------------------------------------------------
+
+A deadlock occurs when all four conditions exist simultaneously.
+
+1. Mutual Exclusion
+
+Only one transaction can use a resource at a time.
+
+2. Hold and Wait
+
+Transaction holds one resource and waits for another.
+
+3. No Preemption
+
+Resource cannot be forcibly taken away.
+
+4. Circular Wait
+
+Transactions form a waiting cycle.
+
+DEADLOCK PREVENTION
+-------------------------------------------------------------------------------
+
+Purpose:
+Prevent deadlocks before they occur.
+
+Method 1:
+Resource Ordering
+
+Example:
+
+Always lock:
+
+Customer Table
+      |
+      v
+Order Table
+      |
+      v
+Payment Table
+
+Every transaction follows same order.
+
+Deadlock cannot occur.
+
+Method 2:
+Wait-Die Scheme
+
+Older Transaction
+      |
+      v
+Allowed To Wait
+
+Younger Transaction
+      |
+      v
+Rolled Back
+
+Method 3:
+Wound-Wait Scheme
+
+Older Transaction
+      |
+      v
+Forces Younger Transaction To Rollback
+
+Method 4:
+Timeout
+
+Transaction waits only for limited time.
+
+After timeout:
+
+Transaction aborted.
+
+DEADLOCK DETECTION
+-------------------------------------------------------------------------------
+
+Instead of prevention:
+
+Allow deadlock.
+
+Detect it later.
+
+WAIT-FOR GRAPH
+-------------------------------------------------------------------------------
+
+          +------+
+          | T1   |
+          +------+
+              |
+              v
+          +------+
+          | T2   |
+          +------+
+              |
+              v
+          +------+
+          | T3   |
+          +------+
+              |
+              v
+          +------+
+          | T1   |
+          +------+
+
+Cycle Detected
+
+=> DEADLOCK FOUND
+
+RECOVERY
+-------------------------------------------------------------------------------
+
+After detection:
+
+1. Select victim transaction
+2. Rollback victim
+3. Release locks
+4. Restart transaction later
+
+ADVANTAGES OF HANDLING DEADLOCKS
+-------------------------------------------------------------------------------
+
++ Better performance
++ Higher availability
++ Consistent database state
++ Safe multi-user access
+
+SUMMARY
+-------------------------------------------------------------------------------
+Deadlock is a circular waiting condition among transactions. DBMS handles it
+using prevention, detection, and recovery techniques.
+
+###############################################################################
+TASK 8
+RELATIONAL MODEL IN DBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What do you understand by Relational Model?
+
+OVERVIEW
+-------------------------------------------------------------------------------
+The Relational Model is the most widely used database model.
+
+It organizes data in the form of tables called relations.
+
+Each table consists of:
+
+Rows
+Columns
+
+Relationships are created using Keys.
+
+HISTORY
+-------------------------------------------------------------------------------
+
+Proposed By:
+
+Dr. Edgar F. Codd
+
+Year:
+
+1970
+
+CORE COMPONENTS
+-------------------------------------------------------------------------------
+
+Relation
+-------
+A table.
+
+Tuple
+-----
+A row.
+
+Attribute
+---------
+A column.
+
+Domain
+------
+Allowed values.
+
+EXAMPLE
+-------------------------------------------------------------------------------
+
+EMPLOYEE TABLE
+
++--------+----------+---------+
+| EmpID  | Name     | DeptID  |
++--------+----------+---------+
+| 101    | Alice    | D01     |
+| 102    | Bob      | D02     |
++--------+----------+---------+
+
+DEPARTMENT TABLE
+
++---------+---------------+
+| DeptID  | Department    |
++---------+---------------+
+| D01     | HR            |
+| D02     | IT            |
++---------+---------------+
+
+RELATIONSHIP
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+     |
+     |
+     | DeptID
+     |
+     V
+
+DEPARTMENT
+
+This relationship is maintained using Foreign Keys.
+
+WHY RELATIONAL MODEL BECAME POPULAR
+-------------------------------------------------------------------------------
+
++ Easy to understand
++ SQL support
++ Strong integrity
++ Flexible querying
++ Reduced redundancy
+
+INTEGRITY CONSTRAINTS
+-------------------------------------------------------------------------------
+
+1. Entity Integrity
+
+Primary Key cannot be NULL.
+
+2. Referential Integrity
+
+Foreign Key must reference valid record.
+
+3. Domain Integrity
+
+Data must follow correct datatype.
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+
+Amazon
+
+Customers Table
+Orders Table
+Products Table
+
+All are connected through relationships.
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+The Relational Model structures data into tables and uses keys to establish
+relationships while maintaining integrity and consistency.
+
+###############################################################################
+TASK 9
+IMPORTANT TERMS IN RDBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+Specify key terms encountered in RDBMS.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Understanding these terms is essential because nearly every database concept
+depends upon them.
+
+1. RELATION
+-------------------------------------------------------------------------------
+
+Definition:
+A table in a relational database.
+
+Example:
+
+STUDENT
+
++--------+--------+
+| ID     | Name   |
++--------+--------+
+
+2. TUPLE
+-------------------------------------------------------------------------------
+
+Definition:
+A row in a table.
+
+Example:
+
++--------+--------+
+| 101    | Alice  |
++--------+--------+
+
+This row is one tuple.
+
+3. ATTRIBUTE
+-------------------------------------------------------------------------------
+
+Definition:
+A column in a table.
+
+Example:
+
+ID
+Name
+Email
+
+are attributes.
+
+4. DOMAIN
+-------------------------------------------------------------------------------
+
+Definition:
+Set of valid values.
+
+Example:
+
+Age
+
+Allowed:
+
+0 - 120
+
+Rejected:
+
+-5
+ABC
+
+5. SCHEMA
+-------------------------------------------------------------------------------
+
+Definition:
+Logical structure of database.
+
+Example:
+
+Student(
+ID,
+Name,
+Email
+)
+
+6. INSTANCE
+-------------------------------------------------------------------------------
+
+Definition:
+Actual data stored at a specific moment.
+
+Schema rarely changes.
+
+Instance changes frequently.
+
+7. DEGREE
+-------------------------------------------------------------------------------
+
+Definition:
+Number of columns.
+
+Example:
+
++----+------+------+
+| ID | Name | Age  |
++----+------+------+
+
+Degree = 3
+
+8. CARDINALITY
+-------------------------------------------------------------------------------
+
+Definition:
+Number of rows.
+
+Example:
+
+10 records
+
+Cardinality = 10
+
+9. PRIMARY KEY
+-------------------------------------------------------------------------------
+
+Unique row identifier.
+
+10. FOREIGN KEY
+-------------------------------------------------------------------------------
+
+Creates relationship between tables.
+
+QUICK REFERENCE TABLE
+-------------------------------------------------------------------------------
+
++---------------+-----------------------------------+
+| Term          | Meaning                           |
++---------------+-----------------------------------+
+| Relation      | Table                             |
+| Tuple         | Row                               |
+| Attribute     | Column                            |
+| Domain        | Allowed Values                    |
+| Degree        | Number Of Columns                 |
+| Cardinality   | Number Of Rows                    |
+| Schema        | Database Structure                |
+| Instance      | Current Data                      |
++---------------+-----------------------------------+
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+These terms form the building blocks of RDBMS and are used throughout database
+design, administration, and development.
+
+###############################################################################
+TASK 10
+TYPES OF KEYS IN RDBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What are different types of keys in RDBMS?
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Keys uniquely identify records and establish relationships between tables.
+
+Without keys:
+
+Data integrity becomes impossible.
+
+KEY HIERARCHY
+-------------------------------------------------------------------------------
+
+                          SUPER KEY
+                              |
+                              |
+                    +---------+---------+
+                    |                   |
+                    v                   v
+
+             CANDIDATE KEY      NON-MINIMAL KEYS
+                    |
+          +---------+---------+
+          |                   |
+          v                   v
+
+     PRIMARY KEY      ALTERNATE KEY
+
+SUPER KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Any attribute or combination of attributes capable of uniquely identifying a
+record.
+
+Example:
+
+EMPLOYEE
+
++--------+----------+----------------+
+| EmpID  | Name     | Email          |
++--------+----------+----------------+
+
+Possible Super Keys:
+
+{EmpID}
+{Email}
+{EmpID, Name}
+{EmpID, Email}
+
+CANDIDATE KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Minimal Super Key.
+
+No unnecessary attributes.
+
+Example:
+
+{EmpID}
+{Email}
+
+PRIMARY KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Chosen Candidate Key.
+
+Characteristics:
+
++ Unique
++ Not NULL
++ Stable
+
+Example:
+
+EmployeeID
+
+ALTERNATE KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Candidate Key not selected as Primary Key.
+
+Example:
+
+Primary Key = EmpID
+
+Alternate Key = Email
+
+COMPOSITE KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Combination of multiple columns.
+
+Example:
+
+STUDENT_COURSE
+
++------------+------------+
+| StudentID  | CourseID   |
++------------+------------+
+
+Primary Key
+
+{StudentID, CourseID}
+
+FOREIGN KEY
+-------------------------------------------------------------------------------
+
+Definition:
+References Primary Key of another table.
+
+Example:
+
+DEPARTMENT
+
++---------+-----------+
+| DeptID  | Name      |
++---------+-----------+
+
+EMPLOYEE
+
++---------+---------+
+| EmpID   | DeptID  |
++---------+---------+
+
+DeptID is Foreign Key.
+
+VISUAL RELATIONSHIP
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+
++--------+----------+---------+
+| EmpID  | Name     | DeptID  |
++--------+----------+---------+
+                        |
+                        |
+                        V
+
+DEPARTMENT
+
++---------+-------------+
+| DeptID  | DeptName    |
++---------+-------------+
+
+UNIQUE KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Allows unique values.
+
+Usually allows NULL values depending on DBMS.
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+
+University System
+
+StudentID -> Primary Key
+
+Email -> Unique Key
+
+DepartmentID -> Foreign Key
+
+(StudentID, CourseID) -> Composite Key
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+Keys are the foundation of relational databases. They uniquely identify
+records, enforce integrity, and establish relationships between tables.
+
+###############################################################################
+TASK 11
+DIFFERENCE BETWEEN PRIMARY KEY, FOREIGN KEY, AND UNIQUE KEY
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What is the difference between Primary Key, Foreign Key, and Unique Key?
+
+OVERVIEW
+-------------------------------------------------------------------------------
+All three keys play a critical role in maintaining database integrity, but
+their purpose and behavior are different.
+
+A Primary Key identifies records.
+
+A Foreign Key creates relationships.
+
+A Unique Key prevents duplicate values.
+
+VISUAL OVERVIEW
+-------------------------------------------------------------------------------
+
+                    +--------------------+
+                    |    PRIMARY KEY     |
+                    +--------------------+
+                    | Unique Identifier  |
+                    +--------------------+
+
+                               |
+                               |
+                               v
+
+                    +--------------------+
+                    |    FOREIGN KEY     |
+                    +--------------------+
+                    | Creates Relation   |
+                    +--------------------+
+
+                               |
+
+                    +--------------------+
+                    |    UNIQUE KEY      |
+                    +--------------------+
+                    | Prevents Duplicate |
+                    +--------------------+
+
+PRIMARY KEY
+-------------------------------------------------------------------------------
+
+Definition:
+A column or group of columns used to uniquely identify every record.
+
+RULES
+-------------------------------------------------------------------------------
+
+* Must be unique.
+* Cannot contain NULL.
+* Only one Primary Key per table.
+
+EXAMPLE
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+
++--------+----------+
+| EmpID  | Name     |
++--------+----------+
+| 101    | Alice    |
+| 102    | Bob      |
++--------+----------+
+
+EmpID = Primary Key
+
+FOREIGN KEY
+-------------------------------------------------------------------------------
+
+Definition:
+A column whose value references the Primary Key of another table.
+
+Purpose:
+Establishes relationships between tables.
+
+EXAMPLE
+-------------------------------------------------------------------------------
+
+DEPARTMENT
+
++---------+--------------+
+| DeptID  | DeptName     |
++---------+--------------+
+| D01     | HR           |
+| D02     | IT           |
++---------+--------------+
+
+EMPLOYEE
+
++--------+----------+---------+
+| EmpID  | Name     | DeptID  |
++--------+----------+---------+
+| 101    | Alice    | D01     |
+| 102    | Bob      | D02     |
++--------+----------+---------+
+
+DeptID in EMPLOYEE = Foreign Key
+
+UNIQUE KEY
+-------------------------------------------------------------------------------
+
+Definition:
+Ensures all values remain unique.
+
+Differences from Primary Key:
+- Multiple Unique Keys allowed.
+- Usually allows NULL values.
+
+EXAMPLE
+-------------------------------------------------------------------------------
+
+USERS
+
++---------+--------------------+
+| UserID  | Email              |
++---------+--------------------+
+| 1       | a@test.com         |
+| 2       | b@test.com         |
++---------+--------------------+
+
+Email = Unique Key
+
+COMPARISON TABLE
+-------------------------------------------------------------------------------
+
++----------------+--------------+--------------+--------------+
+| Property       | Primary Key  | Unique Key   | Foreign Key  |
++----------------+--------------+--------------+--------------+
+| Unique Values  | Yes          | Yes          | No           |
+| NULL Allowed   | No           | Usually Yes  | Yes          |
+| Count/Table    | One          | Many         | Many         |
+| Relationship   | No           | No           | Yes          |
++----------------+--------------+--------------+--------------+
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+
+University Database
+
+StudentID = Primary Key
+
+StudentEmail = Unique Key
+
+DepartmentID = Foreign Key
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+Primary Keys identify records.
+
+Foreign Keys link tables.
+
+Unique Keys enforce uniqueness.
+
+Together they maintain consistency and integrity.
+
+###############################################################################
+TASK 12
+TRANSACTION MANAGEMENT IN DBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+How does transaction management work in DBMS?
+Explain COMMIT and ROLLBACK.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A transaction is a logical unit of work performed within a database.
+
+A transaction contains one or more operations that must succeed together.
+
+If any operation fails, the entire transaction can be reverted.
+
+TRANSACTION FLOW
+-------------------------------------------------------------------------------
+
+                 START TRANSACTION
+                           |
+                           v
+
+                    Execute Query
+
+                           |
+             +-------------+-------------+
+             |                           |
+             v                           v
+
+          SUCCESS                     FAILURE
+             |                           |
+             v                           v
+
+          COMMIT                     ROLLBACK
+             |                           |
+             v                           v
+
+       Changes Saved            Changes Reverted
+
+ACID PROPERTIES
+-------------------------------------------------------------------------------
+
+1. ATOMICITY
+
+All operations execute completely
+or none execute.
+
+Example:
+
+Money Transfer
+
+A = -100
+B = +100
+
+Both operations succeed together.
+
+2. CONSISTENCY
+
+Database remains valid before
+and after transaction.
+
+3. ISOLATION
+
+Transactions do not interfere
+with one another.
+
+4. DURABILITY
+
+Committed changes remain permanent.
+
+REAL WORLD EXAMPLE
+-------------------------------------------------------------------------------
+
+Online Banking Transfer
+
+Initial State
+
+Account A = 1000
+Account B = 500
+
+Transfer = 200
+
+STEP 1
+-------------------------------------------------------------------------------
+
+START TRANSACTION
+
+Account A = 800
+
+STEP 2
+-------------------------------------------------------------------------------
+
+Account B = 700
+
+If both succeed:
+
+COMMIT
+
+RESULT
+-------------------------------------------------------------------------------
+
+Account A = 800
+Account B = 700
+
+COMMIT EXAMPLE
+-------------------------------------------------------------------------------
+
+START TRANSACTION;
+
+UPDATE Account
+SET Balance = Balance - 200
+WHERE ID = 1;
+
+UPDATE Account
+SET Balance = Balance + 200
+WHERE ID = 2;
+
+COMMIT;
+
+Changes become permanent.
+
+ROLLBACK EXAMPLE
+-------------------------------------------------------------------------------
+
+START TRANSACTION;
+
+UPDATE Account
+SET Balance = Balance - 200
+WHERE ID = 1;
+
+Error Occurred.
+
+ROLLBACK;
+
+Result:
+
+Database restored to previous state.
+
+TRANSACTION STATES
+-------------------------------------------------------------------------------
+
+                 +------------+
+                 |  ACTIVE    |
+                 +------------+
+                        |
+                        v
+
+                 +------------+
+                 | PARTIAL    |
+                 | COMMIT     |
+                 +------------+
+                        |
+                        v
+
+                 +------------+
+                 | COMMITTED  |
+                 +------------+
+
+                        OR
+
+                 +------------+
+                 | FAILED     |
+                 +------------+
+                        |
+                        v
+
+                 +------------+
+                 | ABORTED    |
+                 +------------+
+
+ADVANTAGES
+-------------------------------------------------------------------------------
+
++ Data Integrity
++ Error Recovery
++ Multi-user Support
++ Reliable Processing
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+Transaction Management ensures reliable database processing using ACID
+properties, COMMIT operations, and ROLLBACK mechanisms.
+
+###############################################################################
+TASK 13
+NORMALIZATION IN DBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What is Normalization?
+Why is it necessary in database design?
+
+OVERVIEW
+-------------------------------------------------------------------------------
+Normalization is the process of organizing data in a database to reduce
+redundancy and eliminate anomalies.
+
+It divides large tables into smaller logical tables and establishes
+relationships among them.
+
+WHY NORMALIZATION IS NEEDED
+-------------------------------------------------------------------------------
+
+Without normalization:
+
+* Duplicate information appears repeatedly.
+* Updates become difficult.
+* Data becomes inconsistent.
+* Storage is wasted.
+
+PROBLEM TABLE
+-------------------------------------------------------------------------------
+
++--------+--------+--------------+--------------+
+| EmpID  | Name   | DeptName     | Manager      |
++--------+--------+--------------+--------------+
+| 101    | Alice  | IT           | John         |
+| 102    | Bob    | IT           | John         |
+| 103    | Carol  | HR           | Sarah        |
++--------+--------+--------------+--------------+
+
+Problems:
+
+Manager names repeated.
+
+Department names repeated.
+
+Potential inconsistencies.
+
+DATABASE ANOMALIES
+-------------------------------------------------------------------------------
+
+1. INSERTION ANOMALY
+
+Cannot store a department
+until an employee exists.
+
+2. UPDATE ANOMALY
+
+Manager changes:
+
+John -> Jonathan
+
+Must update multiple rows.
+
+3. DELETION ANOMALY
+
+Delete last employee.
+
+Department information may disappear.
+
+NORMALIZED STRUCTURE
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+
++--------+--------+---------+
+| EmpID  | Name   | DeptID  |
++--------+--------+---------+
+| 101    | Alice  | D01     |
+| 102    | Bob    | D01     |
+| 103    | Carol  | D02     |
++--------+--------+---------+
+
+DEPARTMENT
+
++---------+-----------+-----------+
+| DeptID  | DeptName  | Manager   |
++---------+-----------+-----------+
+| D01     | IT        | John      |
+| D02     | HR        | Sarah     |
++---------+-----------+-----------+
+
+RELATIONSHIP
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+     |
+     |
+     v
+
+DEPARTMENT
+
+BENEFITS OF NORMALIZATION
+-------------------------------------------------------------------------------
+
++ Reduced Redundancy
++ Better Integrity
++ Easier Maintenance
++ Improved Consistency
++ Efficient Storage
+
+DISADVANTAGES
+-------------------------------------------------------------------------------
+
+- More tables
+- More joins
+- Slightly complex design
+
+NORMAL FORMS
+-------------------------------------------------------------------------------
+
+UNF
+ |
+ v
+
+1NF
+ |
+ v
+
+2NF
+ |
+ v
+
+3NF
+ |
+ v
+
+BCNF
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+Normalization is a database design technique used to eliminate redundancy,
+remove anomalies, improve integrity, and create an efficient database structure.
+
+===============================================================================
+###############################################################################
+TASK 14
+FIRST NORMAL FORM (1NF)
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What do you understand by 1NF? Explain with an example.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+First Normal Form (1NF) is the first step of database normalization.
+
+A table is said to be in 1NF if:
+
+1. Every column contains atomic values.
+2. No repeating groups exist.
+3. Each row is unique.
+4. Every column contains a single value.
+
+WHAT IS AN ATOMIC VALUE?
+-------------------------------------------------------------------------------
+
+Atomic means indivisible.
+
+Correct:
+
++--------+--------+
+| EmpID  | City   |
++--------+--------+
+| 101    | Delhi  |
++--------+--------+
+
+Incorrect:
+
++--------+------------------------+
+| EmpID  | Cities                 |
++--------+------------------------+
+| 101    | Delhi,Mumbai,Bangalore |
++--------+------------------------+
+
+The second table violates 1NF because a single cell contains multiple values.
+
+UNNORMALIZED TABLE
+-------------------------------------------------------------------------------
+
++--------+----------+----------------------------+
+| EmpID  | Name     | Skills                     |
++--------+----------+----------------------------+
+| 101    | Alice    | SQL,Python,Java            |
+| 102    | Bob      | SQL                        |
++--------+----------+----------------------------+
+
+Problems:
+
+* Difficult searching
+* Difficult indexing
+* Difficult reporting
+* Violates atomicity
+
+CONVERSION TO 1NF
+-------------------------------------------------------------------------------
+
++--------+----------+----------+
+| EmpID  | Name     | Skill    |
++--------+----------+----------+
+| 101    | Alice    | SQL      |
+| 101    | Alice    | Python   |
+| 101    | Alice    | Java     |
+| 102    | Bob      | SQL      |
++--------+----------+----------+
+
+Now:
+
+* Every cell contains one value.
+* Table satisfies 1NF.
+
+VISUAL REPRESENTATION
+-------------------------------------------------------------------------------
+
+Before
+
+Alice
+   |
+   +--> SQL,Python,Java
+
+After
+
+Alice
+  |
+  +--> SQL
+
+Alice
+  |
+  +--> Python
+
+Alice
+  |
+  +--> Java
+
+ADVANTAGES
+-------------------------------------------------------------------------------
+
++ Eliminates repeating groups
++ Simplifies querying
++ Supports relational structure
++ Improves clarity
+
+LIMITATIONS
+-------------------------------------------------------------------------------
+
+- Still contains redundancy
+- Update anomalies may still exist
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+1NF ensures that every cell contains only one value and that repeating groups
+are removed.
+
+###############################################################################
+TASK 15
+SECOND NORMAL FORM (2NF)
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What do you understand by 2NF? Explain with an example.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A table is in Second Normal Form (2NF) if:
+
+1. It is already in 1NF.
+2. No partial dependencies exist.
+
+WHAT IS PARTIAL DEPENDENCY?
+-------------------------------------------------------------------------------
+
+A non-key attribute depends on only part of a composite key.
+
+Consider:
+
+(StudentID, CourseID)
+
+as primary key.
+
+If StudentName depends only on StudentID,
+
+then partial dependency exists.
+
+EXAMPLE TABLE
+-------------------------------------------------------------------------------
+
++------------+------------+-------------+
+| StudentID  | CourseID   | StudentName |
++------------+------------+-------------+
+| 101        | DBMS       | Alice       |
+| 101        | Java       | Alice       |
+| 102        | DBMS       | Bob         |
++------------+------------+-------------+
+
+Primary Key:
+
+(StudentID, CourseID)
+
+Problem:
+
+StudentName depends only on StudentID.
+
+This violates 2NF.
+
+CONVERSION TO 2NF
+-------------------------------------------------------------------------------
+
+STUDENT TABLE
+
++------------+-------------+
+| StudentID  | StudentName |
++------------+-------------+
+| 101        | Alice       |
+| 102        | Bob         |
++------------+-------------+
+
+ENROLLMENT TABLE
+
++------------+------------+
+| StudentID  | CourseID   |
++------------+------------+
+| 101        | DBMS       |
+| 101        | Java       |
+| 102        | DBMS       |
++------------+------------+
+
+VISUAL REPRESENTATION
+-------------------------------------------------------------------------------
+
+Before
+
+(StudentID, CourseID)
+          |
+          +--> StudentName
+
+Partial Dependency Exists
+
+After
+
+StudentID
+     |
+     +--> StudentName
+
+Stored Separately
+
+ADVANTAGES
+-------------------------------------------------------------------------------
+
++ Removes partial dependency
++ Reduces redundancy
++ Improves consistency
+
+LIMITATIONS
+-------------------------------------------------------------------------------
+
+- Transitive dependency may still exist
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+2NF removes partial dependencies by ensuring every non-key attribute depends
+on the complete primary key.
+
+###############################################################################
+TASK 16
+THIRD NORMAL FORM (3NF)
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What do you understand by 3NF? Explain with an example.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+A table is in Third Normal Form if:
+
+1. It is already in 2NF.
+2. No transitive dependencies exist.
+
+WHAT IS TRANSITIVE DEPENDENCY?
+-------------------------------------------------------------------------------
+
+A non-key attribute depends on another non-key attribute.
+
+Example:
+
+EmpID -> DeptID
+
+DeptID -> DeptName
+
+Therefore:
+
+EmpID -> DeptName
+
+This is called transitive dependency.
+
+VIOLATING TABLE
+-------------------------------------------------------------------------------
+
++--------+----------+---------+-------------+
+| EmpID  | Name     | DeptID  | DeptName    |
++--------+----------+---------+-------------+
+| 101    | Alice    | D01     | IT          |
+| 102    | Bob      | D01     | IT          |
+| 103    | Carol    | D02     | HR          |
++--------+----------+---------+-------------+
+
+Problem:
+
+DeptName depends on DeptID.
+
+CONVERT TO 3NF
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+
++--------+----------+---------+
+| EmpID  | Name     | DeptID  |
++--------+----------+---------+
+| 101    | Alice    | D01     |
+| 102    | Bob      | D01     |
+| 103    | Carol    | D02     |
++--------+----------+---------+
+
+DEPARTMENT
+
++---------+-------------+
+| DeptID  | DeptName    |
++---------+-------------+
+| D01     | IT          |
+| D02     | HR          |
++---------+-------------+
+
+VISUAL REPRESENTATION
+-------------------------------------------------------------------------------
+
+Before
+
+EmpID
+  |
+  v
+
+DeptID
+  |
+  v
+
+DeptName
+
+After
+
+EmpID -------> DeptID
+
+DeptID ------> DeptName
+
+Stored Separately
+
+ADVANTAGES
+-------------------------------------------------------------------------------
+
++ Removes transitive dependency
++ Eliminates update anomalies
++ Improves maintainability
+
+LIMITATIONS
+-------------------------------------------------------------------------------
+
+- Certain anomalies can still exist
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+3NF removes transitive dependencies so all non-key attributes depend only on
+the primary key.
+
+###############################################################################
+HOME TASK
+BOYCE CODD NORMAL FORM (BCNF)
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What is BCNF? Explain with example.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+BCNF is a stronger version of 3NF.
+
+A relation is in BCNF if:
+
+For every dependency
+
+X -> Y
+
+X must be a Super Key.
+
+WHY BCNF EXISTS
+-------------------------------------------------------------------------------
+
+Some anomalies still remain even after applying 3NF.
+
+BCNF removes those remaining anomalies.
+
+EXAMPLE
+-------------------------------------------------------------------------------
+
++------------+------------+-------------+
+| StudentID  | Course     | Professor   |
++------------+------------+-------------+
+| 101        | DBMS       | Alan        |
+| 102        | DBMS       | Alan        |
+| 103        | AI         | Grace       |
++------------+------------+-------------+
+
+Business Rule:
+
+Professor -> Course
+
+Each professor teaches only one course.
+
+Problem:
+
+Professor is determining Course.
+
+Professor is not a Super Key.
+
+Therefore BCNF is violated.
+
+CONVERT TO BCNF
+-------------------------------------------------------------------------------
+
+PROFESSOR_COURSE
+
++------------+------------+
+| Professor  | Course     |
++------------+------------+
+| Alan       | DBMS       |
+| Grace      | AI         |
++------------+------------+
+
+STUDENT_PROFESSOR
+
++------------+------------+
+| StudentID  | Professor  |
++------------+------------+
+| 101        | Alan       |
+| 102        | Alan       |
+| 103        | Grace      |
++------------+------------+
+
+Now every determinant is a key.
+
+BCNF satisfied.
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+BCNF is a stricter version of 3NF where every determinant must be a Super Key.
+
+###############################################################################
+COMPLETE NORMALIZATION WALKTHROUGH
+UNF -> 1NF -> 2NF -> 3NF -> BCNF
+###############################################################################
+
+STEP 0 : UNF
+-------------------------------------------------------------------------------
+
++------------+---------+-------------------------+
+| StudentID  | Name    | Courses                 |
++------------+---------+-------------------------+
+| 101        | Alice   | DBMS,Java,Python        |
+| 102        | Bob     | AI,Cloud                |
++------------+---------+-------------------------+
+
+Problems:
+
+* Multiple values in one cell
+* Not atomic
+* Violates 1NF
+
+FLOW
+
+UNF
+ |
+ v
+
+STEP 1 : 1NF
+-------------------------------------------------------------------------------
+
++------------+---------+---------+
+| StudentID  | Name    | Course  |
++------------+---------+---------+
+| 101        | Alice   | DBMS    |
+| 101        | Alice   | Java    |
+| 101        | Alice   | Python  |
+| 102        | Bob     | AI      |
+| 102        | Bob     | Cloud   |
++------------+---------+---------+
+
+Remaining Problem:
+
+Name repeated.
+
+FLOW
+
+UNF
+ |
+ v
+1NF
+ |
+ v
+
+STEP 2 : 2NF
+-------------------------------------------------------------------------------
+
+STUDENT
+
++------------+---------+
+| StudentID  | Name    |
++------------+---------+
+| 101        | Alice   |
+| 102        | Bob     |
++------------+---------+
+
+REGISTRATION
+
++------------+---------+
+| StudentID  | Course  |
++------------+---------+
+| 101        | DBMS    |
+| 101        | Java    |
+| 101        | Python  |
+| 102        | AI      |
+| 102        | Cloud   |
++------------+---------+
+
+Partial dependency removed.
+
+FLOW
+
+UNF
+ |
+ v
+1NF
+ |
+ v
+2NF
+ |
+ v
+
+STEP 3 : 3NF
+-------------------------------------------------------------------------------
+
+EMPLOYEE
+
++--------+---------+--------+
+| EmpID  | Name    | DeptID |
++--------+---------+--------+
+
+DEPARTMENT
+
++--------+-------------+
+| DeptID | DeptName    |
++--------+-------------+
+
+Transitive dependency removed.
+
+FLOW
+
+UNF
+ |
+ v
+1NF
+ |
+ v
+2NF
+ |
+ v
+3NF
+ |
+ v
+
+STEP 4 : BCNF
+-------------------------------------------------------------------------------
+
+PROFESSOR_COURSE
+
++------------+------------+
+| Professor  | Course     |
++------------+------------+
+
+STUDENT_PROFESSOR
+
++------------+------------+
+| StudentID  | Professor  |
++------------+------------+
+
+Every determinant becomes a key.
+
+FLOW
+
+UNF
+ |
+ v
+1NF
+ |
+ v
+2NF
+ |
+ v
+3NF
+ |
+ v
+BCNF
+
+FINAL BENEFITS
+-------------------------------------------------------------------------------
+
++ Minimal Redundancy
++ Improved Consistency
++ Better Integrity
++ Easier Maintenance
++ Reduced Storage Waste
++ Cleaner Relationships
+
+###############################################################################
+TASK 17
+SQL JOINS IN RDBMS
+###############################################################################
+
+QUESTION
+-------------------------------------------------------------------------------
+What are joins? Explain all joins with examples.
+
+OVERVIEW
+-------------------------------------------------------------------------------
+JOIN is used to combine data from multiple tables using related columns.
+
+TABLE A : EMPLOYEE
+
++----+---------+---------+
+| ID | Name    | DeptID  |
++----+---------+---------+
+| 1  | Alice   | D01     |
+| 2  | Bob     | D02     |
+| 3  | Carol   | NULL    |
++----+---------+---------+
+
+TABLE B : DEPARTMENT
+
++---------+-------------+
+| DeptID  | DeptName    |
++---------+-------------+
+| D01     | IT          |
+| D02     | HR          |
+| D03     | Finance     |
++---------+-------------+
+
+1. INNER JOIN
+-------------------------------------------------------------------------------
+
+Returns matching rows only.
+
+Result
+
++---------+-----------+
+| Name    | DeptName  |
++---------+-----------+
+| Alice   | IT        |
+| Bob     | HR        |
++---------+-----------+
+
+2. LEFT JOIN
+-------------------------------------------------------------------------------
+
+Returns all rows from left table.
+
++---------+-----------+
+| Name    | DeptName  |
++---------+-----------+
+| Alice   | IT        |
+| Bob     | HR        |
+| Carol   | NULL      |
++---------+-----------+
+
+3. RIGHT JOIN
+-------------------------------------------------------------------------------
+
+Returns all rows from right table.
+
++---------+-----------+
+| Name    | DeptName  |
++---------+-----------+
+| Alice   | IT        |
+| Bob     | HR        |
+| NULL    | Finance   |
++---------+-----------+
+
+4. FULL OUTER JOIN
+-------------------------------------------------------------------------------
+
+Returns all rows from both tables.
+
++---------+-----------+
+| Name    | DeptName  |
++---------+-----------+
+| Alice   | IT        |
+| Bob     | HR        |
+| Carol   | NULL      |
+| NULL    | Finance   |
++---------+-----------+
+
+5. CROSS JOIN
+-------------------------------------------------------------------------------
+
+Every row joins with every row.
+
+3 Employees × 3 Departments = 9 Rows
+
+6. SELF JOIN
+-------------------------------------------------------------------------------
+
+Table joins with itself.
+
+EMPLOYEE
+
++--------+----------+
+| EmpID  | Manager  |
++--------+----------+
+| 101    | 201      |
+| 102    | 201      |
++--------+----------+
+
+Used to find reporting hierarchy.
+
+VISUAL UNDERSTANDING
+-------------------------------------------------------------------------------
+
+INNER JOIN
+
+A ∩ B
+
+LEFT JOIN
+
+Entire A + Matches
+
+RIGHT JOIN
+
+Entire B + Matches
+
+FULL OUTER JOIN
+
+A ∪ B
+
+SUMMARY
+-------------------------------------------------------------------------------
+
+SQL Joins enable combining data from multiple normalized tables and are
+fundamental to relational databases.
