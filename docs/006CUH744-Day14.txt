@@ -1,0 +1,1370 @@
+======================================================================
+TASK 1: WHAT DO YOU UNDERSTAND ABOUT GIT COLLABORATION?
+======================================================================
+
+Git Collaboration is the process where multiple developers work on the
+same project simultaneously using Git as the version control system.
+
+Key Points:
+-------------
+1. Multiple team members can work on different features at the same time.
+2. Changes are tracked and recorded through commits.
+3. Developers share code using remote repositories such as GitHub,
+   GitLab, or Azure Repos.
+4. Branches are used to isolate work and avoid conflicts.
+5. Changes are merged into the main branch after review and testing.
+6. Collaboration ensures code consistency, traceability, and teamwork.
+
+ASCII Representation:
+---------------------
+
+      Developer A
+            |
+            v
+      +-----------+
+      | Feature A |
+      +-----------+
+            |
+            |
+            v
+
++----------------------------------+
+|          GIT REPOSITORY          |
++----------------------------------+
+
+            ^
+            |
+            |
+      +-----------+
+      | Feature B |
+      +-----------+
+            ^
+            |
+      Developer B
+
+
+Outcome:
+---------
+All team members contribute safely while maintaining a single source
+of truth for the project.
+
+======================================================================
+TASK 2: WHY IS COLLABORATION NECESSARY WHILE WORKING ON GIT?
+======================================================================
+
+Reasons:
+---------
+
+1. Enables multiple developers to work simultaneously.
+2. Reduces duplicate efforts.
+3. Makes tracking changes easier.
+4. Facilitates code review and quality checks.
+5. Maintains project history.
+6. Supports rollback if issues occur.
+7. Improves productivity and teamwork.
+
+ASCII View:
+------------
+
+       Team Member 1
+              |
+              |
+              v
+
+       Team Member 2
+              |
+              |
+              v
+
+       Team Member 3
+              |
+              |
+              v
+
+      +------------------+
+      | Shared Git Repo  |
+      +------------------+
+              |
+              v
+
+      Better Coordination
+      Better Code Quality
+      Faster Delivery
+
+
+Benefits:
+-----------
+
++ Faster Development
++ Better Communication
++ Reduced Conflicts
++ Version Tracking
++ Code Safety
+
+======================================================================
+TASK 3: COMMANDS USED WHILE COLLABORATING IN GIT
+======================================================================
+
+Common Collaboration Commands:
+------------------------------
+
+1. Clone Repository
+
+   git clone <repository_url>
+
+   Purpose:
+   Downloads a remote repository to local machine.
+
+------------------------------------------------------
+
+2. Check Status
+
+   git status
+
+   Purpose:
+   Shows modified, staged, and untracked files.
+
+------------------------------------------------------
+
+3. Create Branch
+
+   git branch feature-branch
+
+   Purpose:
+   Creates a new branch.
+
+------------------------------------------------------
+
+4. Switch Branch
+
+   git checkout feature-branch
+
+   OR
+
+   git switch feature-branch
+
+------------------------------------------------------
+
+5. Pull Latest Changes
+
+   git pull origin main
+
+   Purpose:
+   Fetches and merges latest changes from remote.
+
+------------------------------------------------------
+
+6. Add Files
+
+   git add .
+
+   Purpose:
+   Stages files for commit.
+
+------------------------------------------------------
+
+7. Commit Changes
+
+   git commit -m "Added new feature"
+
+   Purpose:
+   Saves changes locally.
+
+------------------------------------------------------
+
+8. Push Changes
+
+   git push origin feature-branch
+
+   Purpose:
+   Uploads commits to remote repository.
+
+------------------------------------------------------
+
+9. Fetch Remote Changes
+
+   git fetch
+
+   Purpose:
+   Downloads latest information without merging.
+
+------------------------------------------------------
+
+10. Merge Branch
+
+    git merge feature-branch
+
+    Purpose:
+    Combines changes from one branch into another.
+
+------------------------------------------------------
+
+11. View Log
+
+    git log
+
+    Purpose:
+    Displays commit history.
+
+------------------------------------------------------
+
+12. Resolve Conflicts
+
+    git status
+
+    Purpose:
+    Identifies conflicted files during merge.
+
+======================================================================
+TASK 4: TYPICAL GIT WORKFLOW
+======================================================================
+
+
+   START
+      |
+      v
+
++------------------+
+| Clone Repository |
++------------------+
+      |
+      v
+
++------------------+
+| Pull Latest Code |
++------------------+
+      |
+      v
+
++------------------+
+| Create Branch    |
++------------------+
+      |
+      v
+
++------------------+
+| Modify Code      |
++------------------+
+      |
+      v
+
++------------------+
+| git add .        |
++------------------+
+      |
+      v
+
++------------------+
+| git commit       |
++------------------+
+      |
+      v
+
++------------------+
+| git push         |
++------------------+
+      |
+      v
+
++------------------+
+| Create PR/MR     |
++------------------+
+      |
+      v
+
++------------------+
+| Code Review      |
++------------------+
+      |
+      v
+
++------------------+
+| Merge to Main    |
++------------------+
+      |
+      v
+
+      END
+
+
+
+======================================================================
+TASK 5: DAILY BEST PRACTICES FOR WORKING WITH GIT REPOSITORIES
+======================================================================
+
+1. Pull latest changes before starting work.
+
+   git pull origin main
+
+------------------------------------------------------
+
+2. Create a separate branch for every feature or bug fix.
+
+   feature/login-page
+   bugfix/header-alignment
+
+------------------------------------------------------
+
+3. Write meaningful commit messages.
+
+   GOOD:
+   git commit -m "Add login validation"
+
+   BAD:
+   git commit -m "changes"
+
+------------------------------------------------------
+
+4. Commit frequently.
+
+   Small commits are easier to review and revert.
+
+------------------------------------------------------
+
+5. Push work regularly.
+
+   Prevents local data loss.
+
+------------------------------------------------------
+
+6. Resolve conflicts immediately.
+
+   Do not postpone conflict resolution.
+
+------------------------------------------------------
+
+7. Review code before merging.
+
+   Ensure quality and consistency.
+
+------------------------------------------------------
+
+8. Delete unused branches.
+
+   Keeps repository clean.
+
+------------------------------------------------------
+
+9. Avoid committing sensitive information.
+
+   Examples:
+   - Passwords
+   - API Keys
+   - Secrets
+
+------------------------------------------------------
+
+10. Keep main branch stable.
+
+    Only merge tested and reviewed code.
+
+
+======================================================================
+TASK 6: CREATE A DEMO TYPESCRIPT FILE AND EXECUTE IT
+======================================================================
+
+Step 1: Create demo.ts
+
+--------------------------------------------------
+demo.ts
+--------------------------------------------------
+
+let message: string = "Hello TypeScript";
+
+console.log(message);
+
+--------------------------------------------------
+
+Step 2: Compile TypeScript
+
+tsc demo.ts
+
+This generates:
+
+demo.js
+
+Step 3: Execute JavaScript
+
+node demo.js
+
+Output:
+------------
+
+Hello TypeScript
+
+
+
+======================================================================
+TASK 7: CREATE AN INTERFACE AND TRY IT OUT
+======================================================================
+
+Interface Example:
+-------------------
+
+interface Employee {
+    id: number;
+    name: string;
+    department: string;
+}
+
+let emp: Employee = {
+    id: 101,
+    name: "John",
+    department: "IT"
+};
+
+console.log(emp);
+
+Output:
+--------
+
+{
+  id: 101,
+  name: 'John',
+  department: 'IT'
+}
+
+
+ASCII Representation:
+----------------------
+
+        Employee
+            |
+            |
+    +----------------+
+    | id: number     |
+    | name: string   |
+    | department     |
+    +----------------+
+            |
+            v
+
+    Object Creation
+            |
+            v
+
+      Employee Data
+
+
+Purpose:
+---------
+Interfaces define the structure of an object.
+
+
+======================================================================
+TASK 8: USE OPTIONAL VARIABLE (?) IN INTERFACE
+======================================================================
+
+Interface with Optional Property:
+----------------------------------
+
+interface Employee {
+    id: number;
+    name: string;
+    department?: string;
+}
+
+let emp1: Employee = {
+    id: 101,
+    name: "John"
+};
+
+let emp2: Employee = {
+    id: 102,
+    name: "David",
+    department: "IT"
+};
+
+console.log(emp1);
+console.log(emp2);
+
+Output:
+--------
+
+{ id: 101, name: 'John' }
+
+{ id: 102, name: 'David', department: 'IT' }
+
+======================================================================
+TASK 9: DEMO WITH CONSTRUCTOR, DEFAULT AND PARAMETERIZED
+======================================================================
+
+Class Example:
+---------------
+
+class Student {
+
+    id: number;
+    name: string;
+
+    constructor(id: number = 0, name: string = "Unknown") {
+        this.id = id;
+        this.name = name;
+    }
+
+    display(): void {
+        console.log(this.id + " " + this.name);
+    }
+}
+
+let s1 = new Student();
+let s2 = new Student(101, "Alex");
+
+s1.display();
+s2.display();
+
+Output:
+--------
+
+0 Unknown
+
+101 Alex
+
+
+ASCII Representation:
+----------------------
+
+              Student Class
+                    |
+       +--------------------------+
+       | id                       |
+       | name                     |
+       | constructor()            |
+       | display()                |
+       +--------------------------+
+                    |
+        +-----------+-----------+
+        |                       |
+        v                       v
+
+new Student()      new Student(101,"Alex")
+
+Default            Parameterized
+
+0 Unknown          101 Alex
+
+
+Constructor Types:
+-------------------
+
+1. Default Constructor
+
+   new Student()
+
+2. Parameterized Constructor
+
+   new Student(101,"Alex")
+
+
+======================================================================
+TASK 10: PRIMITIVE AND SPECIAL DATA TYPES IN TYPESCRIPT
+======================================================================
+
+1. Primitive Data Types
+-----------------------
+
+Primitive types store single values.
+
+Examples:
+
+let name: string = "John";
+let age: number = 25;
+let isActive: boolean = true;
+let bigValue: bigint = 1000n;
+let sym: symbol = Symbol("id");
+
+Primitive Types:
+
++-----------+
+| string    |
+| number    |
+| boolean   |
+| bigint    |
+| symbol    |
+| null      |
+| undefined |
++-----------+
+
+
+ASCII View:
+------------
+
+Primitive Types
+      |
+      +--> string
+      +--> number
+      +--> boolean
+      +--> bigint
+      +--> symbol
+      +--> null
+      +--> undefined
+
+
+======================================================================
+
+2. Special Data Types
+----------------------
+
+A. any
+-------
+
+let data: any = "Hello";
+data = 100;
+
+Meaning:
+Can store any type of value.
+
+------------------------------------------------------
+
+B. unknown
+-----------
+
+let value: unknown = "Hello";
+
+Meaning:
+Safer version of any.
+
+------------------------------------------------------
+
+C. void
+--------
+
+function show(): void {
+    console.log("Hello");
+}
+
+Meaning:
+Function returns nothing.
+
+------------------------------------------------------
+
+D. never
+---------
+
+function errorMsg(): never {
+    throw new Error("Error");
+}
+
+Meaning:
+Function never completes normally.
+
+------------------------------------------------------
+
+ASCII View:
+------------
+
+Special Types
+      |
+      +--> any
+      |
+      +--> unknown
+      |
+      +--> void
+      |
+      +--> never
+
+
+======================================================================
+TYPESCRIPT DATA TYPES SUMMARY
+======================================================================
+
+                    Typescript
+                         |
+         +---------------+---------------+
+         |                               |
+         v                               v
+
+ Primitive Types                Special Types
+
+ string                          any
+ number                          unknown
+ boolean                         void
+ bigint                          never
+ symbol
+ null
+ undefined
+======================================================================
+TASK 11: CREATE A CLASS WITH ACCESS MODIFIERS
+======================================================================
+
+Access Modifiers in TypeScript:
+-------------------------------
+
+1. public
+   - Accessible from anywhere.
+
+2. private
+   - Accessible only within the same class.
+
+3. protected
+   - Accessible within the class and its child classes.
+
+======================================================================
+EXAMPLE PROGRAM
+======================================================================
+
+class Employee {
+
+    public empId: number;
+    private salary: number;
+    protected department: string;
+
+    constructor(
+        empId: number,
+        salary: number,
+        department: string
+    ) {
+        this.empId = empId;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    public displayEmployee(): void {
+        console.log("Employee ID: " + this.empId);
+        console.log("Salary: " + this.salary);
+        console.log("Department: " + this.department);
+    }
+}
+
+class Manager extends Employee {
+
+    public showDepartment(): void {
+        console.log("Department: " + this.department);
+    }
+}
+
+let emp = new Employee(101, 50000, "IT");
+
+console.log(emp.empId);      // Accessible
+
+emp.displayEmployee();
+
+let mgr = new Manager(102, 80000, "HR");
+
+mgr.showDepartment();
+
+
+======================================================================
+OUTPUT
+======================================================================
+
+101
+
+Employee ID: 101
+Salary: 50000
+Department: IT
+
+Department: HR
+
+======================================================================
+ACCESS MODIFIER VISIBILITY
+======================================================================
+
+                 +------------------+
+                 |    Employee      |
+                 +------------------+
+                 | public empId     |
+                 | private salary   |
+                 | protected dept   |
+                 +------------------+
+                          |
+                          |
+                          v
+                 +------------------+
+                 |    Manager       |
+                 +------------------+
+                 | Can access       |
+                 | empId            |
+                 | department       |
+                 +------------------+
+
+======================================================================
+ACCESS TABLE
+======================================================================
+
+public
+  |
+  +--> Class
+  +--> Child Class
+  +--> Outside Class
+
+private
+  |
+  +--> Class Only
+
+protected
+  |
+  +--> Class
+  +--> Child Class
+
+======================================================================
+KEY POINTS
+======================================================================
+
+✓ public  -> Accessible everywhere.
+
+✓ private -> Accessible only inside the class.
+
+✓ protected -> Accessible inside the class and
+               inherited child classes.
+
+✓ private members cannot be accessed directly
+  outside the class.
+
+✓ protected members support inheritance while
+  maintaining encapsulation.
+
+
+======================================================================
+TASK 12: TO CREATE A TYPESCRIPT FILE AND RUN IT FOR THE FIRST TIME
+======================================================================
+
+Scenario:
+---------
+Suppose TypeScript is NOT installed on your system and you are creating
+and running a .ts file for the very first time.
+
+======================================================================
+STEP 1: INSTALL NODE.JS
+======================================================================
+
+Download and install Node.js from:
+
+https://nodejs.org
+
+After installation, verify:
+
+node -v
+
+npm -v
+
+Expected Output:
+----------------
+
+v22.x.x
+10.x.x
+
+(Version numbers may vary)
+
+======================================================================
+STEP 2: INSTALL TYPESCRIPT
+======================================================================
+
+Open Command Prompt / Terminal and execute:
+
+npm install -g typescript
+
+Verify installation:
+
+tsc -v
+
+Output:
+--------
+
+Version 5.x.x
+
+======================================================================
+STEP 3: CREATE A PROJECT FOLDER
+======================================================================
+
+Create a folder:
+
+TypeScriptDemo
+
+Open terminal inside the folder.
+
+Commands:
+
+mkdir TypeScriptDemo
+
+cd TypeScriptDemo
+
+======================================================================
+STEP 4: CREATE A TYPESCRIPT FILE
+======================================================================
+
+Create a file named:
+
+demo.ts
+
+Content:
+---------
+
+let message: string = "Hello TypeScript";
+
+console.log(message);
+
+======================================================================
+STEP 5: COMPILE TYPESCRIPT FILE
+======================================================================
+
+Command:
+
+tsc demo.ts
+
+What Happens?
+--------------
+
+demo.ts
+    |
+    v
+TypeScript Compiler (tsc)
+    |
+    v
+demo.js
+
+A JavaScript file is generated automatically.
+
+======================================================================
+STEP 6: VERIFY GENERATED FILES
+======================================================================
+
+Folder Structure:
+------------------
+
+TypeScriptDemo
+|
++-- demo.ts
+|
++-- demo.js
+
+======================================================================
+STEP 7: EXECUTE THE PROGRAM
+======================================================================
+
+Command:
+
+node demo.js
+
+Output:
+--------
+
+Hello TypeScript
+
+======================================================================
+ALL COMMANDS TOGETHER
+======================================================================
+
+1. Check Node.js
+
+   node -v
+
+2. Check npm
+
+   npm -v
+
+3. Install TypeScript
+
+   npm install -g typescript
+
+4. Verify TypeScript
+
+   tsc -v
+
+5. Create Project Folder
+
+   mkdir TypeScriptDemo
+
+6. Navigate to Folder
+
+   cd TypeScriptDemo
+
+7. Create File
+
+   demo.ts
+
+8. Compile File
+
+   tsc demo.ts
+
+9. Run Program
+
+   node demo.js
+   
+Task 13:
+Create a demo and see how generics work in ts.
+
+======================================================================
+TASK 14: WHAT ARE TYPE ANNOTATIONS IN TYPESCRIPT?
+======================================================================
+
+Definition:
+-----------
+
+Type Annotations are used to explicitly specify the data type of a
+variable, parameter, function return value, or object property.
+
+They help TypeScript understand what type of data is expected and
+provide type checking during compilation.
+
+Syntax:
+--------
+
+variableName: dataType
+
+Example:
+---------
+
+let studentName: string = "John";
+let age: number = 25;
+let isActive: boolean = true;
+
+======================================================================
+EXAMPLE
+======================================================================
+
+let course: string = "TypeScript";
+let duration: number = 30;
+
+console.log(course);
+console.log(duration);
+
+Output:
+--------
+
+TypeScript
+30
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+        Variable
+            |
+            v
+
+     course: string
+
+     age: number
+
+     isActive: boolean
+
+            |
+            v
+
+     Type Safety
+
+
+Benefits:
+----------
+
+✓ Detects errors during compilation
+✓ Improves code readability
+✓ Better IntelliSense support
+✓ Makes code easier to maintain
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+Type annotations are used to define the expected data type of variables,
+parameters, properties, and return values in TypeScript, enabling type
+safety and error detection during development.
+
+======================================================================
+TASK 15: WHAT IS THE PURPOSE OF THE "ANY" KEYWORD IN TYPESCRIPT?
+======================================================================
+
+Definition:
+-----------
+
+The "any" type allows a variable to store any kind of value without
+type checking.
+
+TypeScript disables type checking for variables declared with "any".
+
+Example:
+----------
+
+let value: any;
+
+value = "Hello";
+value = 100;
+value = true;
+
+console.log(value);
+
+Output:
+--------
+
+true
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+            any
+             |
+    +--------+--------+
+    |        |        |
+    v        v        v
+
+ string   number   boolean
+
+             |
+             v
+
+    Accepts Everything
+
+======================================================================
+WHEN TO USE ANY?
+======================================================================
+
+✓ When the type is unknown.
+✓ While migrating JavaScript code to TypeScript.
+✓ When handling dynamic data.
+
+Disadvantages:
+---------------
+
+✗ No type safety
+✗ Runtime errors may occur
+✗ Less compiler support
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+The "any" keyword allows a variable to hold values of any data type and
+disables TypeScript's type checking for that variable.
+
+======================================================================
+TASK 16: DIFFERENCE BETWEEN "ANY" AND "UNKNOWN"
+======================================================================
+
+Definition:
+-----------
+
+Both "any" and "unknown" can store values of any type.
+
+However:
+
+any
+----
+No type checking.
+
+unknown
+---------
+Type checking is required before using the value.
+
+======================================================================
+EXAMPLE USING ANY
+======================================================================
+
+let data: any = "Hello";
+
+console.log(data.toUpperCase());
+
+Output:
+--------
+
+HELLO
+
+No compiler error.
+
+======================================================================
+EXAMPLE USING UNKNOWN
+======================================================================
+
+let data: unknown = "Hello";
+
+if (typeof data === "string") {
+    console.log(data.toUpperCase());
+}
+
+Output:
+--------
+
+HELLO
+
+Type checking is mandatory.
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+                 Any
+                  |
+                  v
+
+      "Trust me, I know the type"
+
+                  |
+                  v
+
+      No Validation Required
+
+
+------------------------------------------------------
+
+
+               Unknown
+                  |
+                  v
+
+     "Verify the type first"
+
+                  |
+                  v
+
+         Type Check Needed
+
+======================================================================
+COMPARISON
+======================================================================
+
+any
+ |
+ +--> Stores any value
+ +--> No type checking
+ +--> Unsafe
+
+unknown
+ |
+ +--> Stores any value
+ +--> Requires type checking
+ +--> Safer
+
+======================================================================
+ASCII TABLE
+======================================================================
+
+                +----------------+----------------+
+                |      any       |    unknown     |
++---------------+----------------+----------------+
+| Any Value     |      YES       |      YES       |
+| Type Safety   |      NO        |      YES       |
+| Verification  |  Not Required  |   Required     |
+| Safe Usage    |      LOW       |      HIGH      |
++---------------+----------------+----------------+
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+The "any" type bypasses all type checking, whereas "unknown" also
+accepts any value but requires type validation before its usage, making
+it safer than "any".
+
+======================================================================
+TASK 17: WHAT IS THE tsconfig.json FILE USED FOR?
+======================================================================
+
+Definition:
+-----------
+
+tsconfig.json is the configuration file used by the TypeScript compiler.
+
+It defines how TypeScript files should be compiled into JavaScript.
+
+When a project grows larger, tsconfig.json helps maintain consistent
+compiler settings across the entire application.
+
+======================================================================
+SAMPLE tsconfig.json
+======================================================================
+
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "outDir": "./dist"
+  }
+}
+
+======================================================================
+COMMON OPTIONS
+======================================================================
+
+target
+-------
+Specifies JavaScript version.
+
+Example:
+"target": "ES2020"
+
+------------------------------------------------------
+
+module
+-------
+Specifies module system.
+
+Example:
+"module": "commonjs"
+
+------------------------------------------------------
+
+strict
+-------
+Enables strict type checking.
+
+Example:
+"strict": true
+
+------------------------------------------------------
+
+outDir
+-------
+Specifies output folder for JavaScript files.
+
+Example:
+"outDir": "./dist"
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+             tsconfig.json
+                    |
+    +---------------+---------------+
+    |               |               |
+    v               v               v
+
+   target         module         strict
+
+                    |
+                    v
+
+         TypeScript Compiler
+                 (tsc)
+                    |
+                    v
+
+          Generates JavaScript
+
+======================================================================
+PROJECT FLOW
+======================================================================
+
+      TypeScript Files
+              |
+              v
+
+      +------------------+
+      | tsconfig.json    |
+      | Compiler Rules   |
+      +------------------+
+              |
+              v
+
+            tsc
+              |
+              v
+
+       JavaScript Files
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+The tsconfig.json file is the TypeScript configuration file that
+specifies compiler settings such as target JavaScript version, module
+system, strict type checking rules, and output directories for the
+entire project.
+
+======================================================================
+
+
+
+

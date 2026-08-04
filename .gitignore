@@ -18,7 +18,21 @@ out/
 .settings/
 
 # =========================
-# Maven / Build
+# Node.js / Angular / TypeScript
+# =========================
+**/node_modules/
+**/dist/
+**/coverage/
+.pnpm-store/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Angular cache
+.angular/
+
+# =========================
+# Maven / Gradle
 # =========================
 target/
 build/
@@ -46,16 +60,27 @@ logs/
 # =========================
 # Spring Boot Config
 # =========================
+application.properties
+application.yml
+application.yaml
+
 **/application.properties
+**/application.yml
+**/application.yaml
+
 application-local.properties
 application-dev.properties
+application-prod.properties
+
+application-local.yml
+application-dev.yml
+application-prod.yml
 
 # =========================
 # Database Files
 # =========================
 *.db
 *.sqlite
-*.sql
 
 # =========================
 # Temporary Files
