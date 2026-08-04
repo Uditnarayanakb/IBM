@@ -1,0 +1,792 @@
++==============================================================================+
+|                              TASK 1 - ER DIAGRAM                             |
++==============================================================================+
+
+What is an ER Diagram?
+----------------------
+
+An Entity Relationship (ER) Diagram is a visual representation of a database
+that shows entities, attributes, and relationships between entities.
+
+ER diagrams are used during database design to understand how data is stored
+and how different entities are connected.
+
+Components of an ER Diagram
+---------------------------
+
+1. Entity
+   An object for which data is stored.
+
+   Examples:
+   - Customer
+   - Account
+   - Employee
+
+2. Attribute
+   Properties that describe an entity.
+
+   Example:
+
+   Customer
+   --------
+   Customer_ID
+   Customer_Name
+   Phone_Number
+
+3. Relationship
+   Defines how entities are connected.
+
+   Example:
+   Customer owns Account
+
+ER Diagram Example
+------------------
+
+                    +----------------------+
+                    |      CUSTOMER        |
+                    +----------------------+
+                    | Customer_ID (PK)     |
+                    | Customer_Name        |
+                    | Phone_Number         |
+                    +----------------------+
+                              |
+                              |
+                              | OWNS
+                              |
+                              V
+                    +----------------------+
+                    |       ACCOUNT        |
+                    +----------------------+
+                    | Account_ID (PK)      |
+                    | Account_Type         |
+                    | Balance              |
+                    +----------------------+
+
+Cardinality
+-----------
+
+Customer (1) -------------- (M) Account
+
+One customer can have multiple accounts.
+
+Tools Used to Draw ER Diagrams
+------------------------------
+
+1. draw.io
+2. Lucidchart
+3. Miro
+4. SmartDraw
+5. FigJam
++==============================================================================+
+|                          TASK 2 - INDEXING IN DBMS                           |
++==============================================================================+
+
+What is Indexing?
+-----------------
+
+Indexing is a database optimization technique used to improve the speed of
+data retrieval operations.
+
+An index works similar to the index section of a book. Instead of searching
+every row in a table, the database uses the index to quickly locate data.
+
+How Indexing Works
+------------------
+
+Without Index:
+
+Customer Table
+
++------+--------+
+| ID   | Name   |
++------+--------+
+| 101  | Rama   |
+| 102  | Sita   |
+| 103  | Hari   |
+| 104  | Kiran  |
++------+--------+
+
+Searching for "Hari":
+
+Database checks Row 1
+Database checks Row 2
+Database checks Row 3
+
+This process is called Full Table Scan.
+
+With Index:
+
+                INDEX
+                   |
+                   V
+
+      +-----------------------+
+      | Hari  --> Row 3       |
+      | Kiran --> Row 4       |
+      | Rama  --> Row 1       |
+      | Sita  --> Row 2       |
+      +-----------------------+
+
+Database directly finds the required record.
+
+Common Index Types
+------------------
+
+1. B-Tree Index
+2. Unique Index
+3. Hash Index
+4. Partial Index
+5. GIN Index
+6. GiST Index
+
+Example:
+
+CREATE INDEX idx_customer_name
+ON customer(name);
+
++==============================================================================+
+|                TASK 3 - INDEXING AND QUERY PERFORMANCE                       |
++==============================================================================+
+
+Does Indexing Improve Query Performance?
+----------------------------------------
+
+Yes, indexing significantly improves query performance.
+
+Without an index, PostgreSQL scans all rows in a table to find the required
+data.
+
+With an index, PostgreSQL directly locates the required records using the
+index structure.
+
+Example
+-------
+
+Query:
+
+SELECT * FROM customer
+WHERE name = 'Rama';
+
+Without Index:
+--------------
+Rows checked = 100000
+
+With Index:
+-----------
+Rows checked = very few
+
+Performance Improvement
+-----------------------
+
+1. Faster SELECT operations.
+2. Faster WHERE clause searches.
+3. Faster JOIN operations.
+4. Faster ORDER BY operations.
+
+Drawbacks
+---------
+
+1. Requires extra storage space.
+2. INSERT operations become slightly slower.
+3. UPDATE operations may become slower.
+4. DELETE operations require index maintenance.
+
+Conclusion
+----------
+
+Indexing greatly improves read performance and is one of the most important
+database optimization techniques.
++==============================================================================+
+|                TASK 3 - INDEXING AND QUERY PERFORMANCE                       |
++==============================================================================+
+
+Does Indexing Improve Query Performance?
+----------------------------------------
+
+Yes, indexing significantly improves query performance.
+
+Without an index, PostgreSQL scans all rows in a table to find the required
+data.
+
+With an index, PostgreSQL directly locates the required records using the
+index structure.
+
+Example
+-------
+
+Query:
+
+SELECT * FROM customer
+WHERE name = 'Rama';
+
+Without Index:
+--------------
+Rows checked = 100000
+
+With Index:
+-----------
+Rows checked = very few
+
+Performance Improvement
+-----------------------
+
+1. Faster SELECT operations.
+2. Faster WHERE clause searches.
+3. Faster JOIN operations.
+4. Faster ORDER BY operations.
+
+Drawbacks
+---------
+
+1. Requires extra storage space.
+2. INSERT operations become slightly slower.
+3. UPDATE operations may become slower.
+4. DELETE operations require index maintenance.
+
+Conclusion
+----------
+
+Indexing greatly improves read performance and is one of the most important
+database optimization techniques.
++==============================================================================+
+|                      TASK 4 - ACID PROPERTIES IN RDBMS                       |
++==============================================================================+
+
+What are ACID Properties?
+-------------------------
+
+ACID properties ensure reliable and consistent database transactions.
+
+ACID stands for:
+
+A - Atomicity
+C - Consistency
+I - Isolation
+D - Durability
+
+1. Atomicity
+------------
+
+A transaction is treated as a single unit.
+
+Either all operations succeed or all fail.
+
+Example:
+
+Transfer ₹1000 from Account A to Account B.
+
+Step 1:
+Account A = -1000
+
+Step 2:
+Account B = +1000
+
+If Step 2 fails, Step 1 is rolled back.
+
+2. Consistency
+--------------
+
+A transaction must move the database from one valid state to another valid
+state.
+
+Rules and constraints must always be maintained.
+
+3. Isolation
+------------
+
+Multiple transactions should not interfere with each other.
+
+Transaction 1 and Transaction 2 should execute independently.
+
+4. Durability
+-------------
+
+Once data is committed, it remains permanently stored even if a system crash
+occurs.
+
+Transaction Flow
+----------------
+
+BEGIN
+   |
+   V
+Operations
+   |
+   +---- Success ---> COMMIT
+   |
+   +---- Failure ---> ROLLBACK
++==============================================================================+
+|                     TASK 6 - ADD CHECK CONSTRAINT                            |
++==============================================================================+
+
+A CHECK constraint is used to restrict values that can be inserted into a
+column.
+
+Example
+-------
+
+CREATE TABLE Accounts(
+    id INT,
+    cust_name VARCHAR(30),
+    balance NUMERIC
+);
+
+Add Constraint
+
+ALTER TABLE Accounts
+ADD CONSTRAINT chk_balance
+CHECK(balance > 0);
+
+Allowed Values
+--------------
+
+101 | Rama | 5000
+
+102 | Sita | 100
+
+Not Allowed
+-----------
+
+103 | Hari | -500
+
+PostgreSQL Error:
+
+ERROR: new row violates check constraint
+
+Another Example
+---------------
+
+ALTER TABLE Customer
+ADD CONSTRAINT age_check
+CHECK(age > 0);
+
++==============================================================================+
+|                          TASK 7 - WHERE CLAUSE                              |
++==============================================================================+
+
+The WHERE clause is used to filter records from a table.
+
+Syntax
+------
+
+SELECT column_name
+FROM table_name
+WHERE condition;
+
+Example Table
+-------------
+
++------+-----------+------+
+| ID   | Name      | Age  |
++------+-----------+------+
+| 101  | Rama      | 50   |
+| 102  | Sita      | 45   |
+| 103  | Lakshman  | 48   |
++------+-----------+------+
+
+Example 1
+---------
+
+SELECT *
+FROM Customer
+WHERE id = 102;
+
+Output
+
+102 | Sita | 45
+
+Example 2
+---------
+
+SELECT *
+FROM Customer
+WHERE name = 'Rama';
+
+Output
+
+101 | Rama | 50
+
+Common Operators
+----------------
+
+=    Equal To
+
+>    Greater Than
+
+<    Less Than
+
+>=   Greater Than Equal To
+
+<=   Less Than Equal To
+
+<>   Not Equal To
+
++==============================================================================+
+|                           TASK 8 - ORDER BY                                 |
++==============================================================================+
+
+The ORDER BY clause is used to sort data.
+
+Ascending Order
+---------------
+
+SELECT *
+FROM Customer
+ORDER BY name ASC;
+
+Descending Order
+----------------
+
+SELECT *
+FROM Customer
+ORDER BY name DESC;
+
+Example
+-------
+
+Original
+
+Rama
+Sita
+Lakshman
+
+ORDER BY ASC
+
+Lakshman
+Rama
+Sita
+
+ORDER BY DESC
+
+Sita
+Rama
+Lakshman
+
+Sorting Multiple Columns
+------------------------
+
+SELECT *
+FROM Customer
+ORDER BY age DESC, name ASC;
+
++==============================================================================+
+|                             TASK 9 - LIMIT                                  |
++==============================================================================+
+
+The LIMIT clause is used to restrict the number of records returned.
+
+Syntax
+------
+
+SELECT *
+FROM table_name
+LIMIT number;
+
+Example
+-------
+
+SELECT *
+FROM Customer
+LIMIT 3;
+
+Output
+------
+
+Returns only the first three records.
+
+Example
+
+SELECT age
+FROM Customer
+LIMIT 2;
+
+Result
+
+50
+45
+
+Usage
+-----
+
+LIMIT is commonly used in:
+
+1. Pagination
+2. Testing
+3. Viewing sample data
++==============================================================================+
+|                         TASK 10 - JOINS IN POSTGRESQL                        |
++==============================================================================+
+
+A JOIN combines rows from multiple tables.
+
+Tables
+------
+
+FRONTEND_DEVELOPERS
+
++------+---------+------------+
+| ID   | Name    | Project_ID |
++------+---------+------------+
+| 101  | Ashok   | P01        |
+| 102  | Kishore | P02        |
+| 103  | Sagar   | P03        |
+| 104  | Hitesh  | P04        |
+| 105  | Hari    | P44        |
++------+---------+------------+
+
+BACKEND_DEVELOPERS
+
++------+---------+------------+
+| ID   | Name    | Project_ID |
++------+---------+------------+
+| 111  | Sam     | P11        |
+| 122  | Ritu    | P22        |
+| 103  | Sagar   | P33        |
+| 144  | Nikky   | P44        |
++------+---------+------------+
+
+INNER JOIN
+----------
+
+Returns only matching rows.
+
+SELECT *
+FROM frontend_developers f
+INNER JOIN backend_developers b
+ON f.project_id = b.project_id;
+
+Result:
+
+Hari | P44 | Nikky | P44
+
+LEFT OUTER JOIN
+---------------
+
+Returns all rows from left table and matching rows from right table.
+
+SELECT *
+FROM frontend_developers f
+LEFT JOIN backend_developers b
+ON f.project_id = b.project_id;
+
+RIGHT OUTER JOIN
+----------------
+
+Returns all rows from right table and matching rows from left table.
+
+SELECT *
+FROM frontend_developers f
+RIGHT JOIN backend_developers b
+ON f.project_id = b.project_id;
+
+FULL OUTER JOIN
+---------------
+
+Returns all matching and non-matching rows.
+
+SELECT *
+FROM frontend_developers f
+FULL OUTER JOIN backend_developers b
+ON f.project_id = b.project_id;
+
+CROSS JOIN
+----------
+
+Returns Cartesian Product.
+
+SELECT *
+FROM frontend_developers
+CROSS JOIN backend_developers;
+
+Row Count
+
+5 × 4 = 20 Rows
+
+SELF JOIN
+---------
+
+A table joined with itself.
+
+Used to compare rows within the same table.
++==============================================================================+
+|                      TASK 11 - INDEXES IN POSTGRESQL                         |
++==============================================================================+
+
+Indexes improve query performance by reducing data lookup time.
+
+1. B-TREE INDEX
+---------------
+
+CREATE INDEX idx_customer_name
+ON customer(name);
+
+Used for:
+
+=
+<
+>
+BETWEEN
+
+2. UNIQUE INDEX
+---------------
+
+CREATE UNIQUE INDEX idx_email_unique
+ON users(email);
+
+Prevents duplicate values.
+
+3. PARTIAL INDEX
+----------------
+
+CREATE INDEX idx_unbilled_orders
+ON orders(status)
+WHERE status='unbilled';
+
+Indexes only selected rows.
+
+4. GIN INDEX
+------------
+
+CREATE INDEX idx_data_json
+ON documents
+USING GIN(data);
+
+Commonly used for:
+
+JSONB
+Full Text Search
+
+Performance Testing
+-------------------
+
+Before Index:
+
+Execution Time = High
+
+After Index:
+
+Execution Time = Lower
+
+Use
+
+EXPLAIN ANALYZE
+
+to compare performance.
++==============================================================================+
+|                           TASK 12 - SCHEMAS                                 |
++==============================================================================+
+
+A Schema is a logical container used to organize database objects.
+
+Benefits
+--------
+
+1. Better organization
+2. Object grouping
+3. Security management
+
+Create Schema
+-------------
+
+CREATE SCHEMA hr;
+
+Create Table Inside Schema
+--------------------------
+
+CREATE TABLE hr.employees(
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    department TEXT
+);
+
+Insert Data
+-----------
+
+INSERT INTO hr.employees(name,department)
+VALUES('Rama','HR');
+
+Query Table
+-----------
+
+SELECT *
+FROM hr.employees;
+
+Drop Schema
+-----------
+
+DROP SCHEMA hr;
+
+Drop Schema With Objects
+------------------------
+
+DROP SCHEMA hr CASCADE;
++==============================================================================+
+|                 TASK 13 - JAVA CONNECTIVITY WITH POSTGRESQL                  |
++==============================================================================+
+
+Maven Dependency
+----------------
+
+Add the following dependency inside pom.xml
+
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.7.3</version>
+</dependency>
+
+Java Program
+------------
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class PostgreSQLConnection {
+
+    public static void main(String[] args) {
+
+        String url =
+        "jdbc:postgresql://localhost:5432/BankDB";
+
+        String user = "postgres";
+        String password = "postgres";
+
+        try {
+
+            Connection con =
+            DriverManager.getConnection(
+            url,
+            user,
+            password);
+
+            System.out.println(
+            "Connection Successful");
+
+            con.close();
+
+        } catch(Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+}
+
+Connection Flow
+---------------
+
+Java Application
+       |
+       V
+PostgreSQL JDBC Driver
+       |
+       V
+PostgreSQL Server
+       |
+       V
+BankDB Database
+
+Output
+------
+
+Connection Successful

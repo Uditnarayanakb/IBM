@@ -1,36 +1,78 @@
+# =========================
 # IntelliJ IDEA
+# =========================
 .idea/
 *.iml
 out/
 
+# =========================
 # VS Code
+# =========================
 .vscode/
 
+# =========================
 # Eclipse
+# =========================
 .project
 .classpath
 .settings/
 
-# Maven
+# =========================
+# Maven / Build
+# =========================
 target/
+build/
 
+# Maven Wrapper JAR
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================
 # Java
+# =========================
 *.class
 
-# OS files
-Thumbs.db
-.DS_Store
-
+# =========================
 # Logs
+# =========================
 *.log
+logs/
 
-# Environment / Secrets
+# =========================
+# Environment Files
+# =========================
 .env
-application.properties
+.env.*
 
-# MySQL local files (if accidentally created)
-*.sql
+# =========================
+# Spring Boot Config
+# =========================
+**/application.properties
+application-local.properties
+application-dev.properties
+
+# =========================
+# Database Files
+# =========================
 *.db
+*.sqlite
+*.sql
 
-# Maven wrapper generated files (optional)
-.mvn/wrapper/maven-wrapper.jar
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Test Reports
+# =========================
+surefire-reports/
+failsafe-reports/
