@@ -1,0 +1,39 @@
+body {
+    background: #0f172a;
+}
+
+form {
+    width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #1e293b;
+    border-radius: 12px;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    color: #38bdf8;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #38bdf8;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+small {
+    color: #f87171;
+}
+
+p {
+    color: #fbbf24;
+}

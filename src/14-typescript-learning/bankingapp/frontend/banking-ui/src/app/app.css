@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f7fb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+  margin-top: 30px;
+  font-size: 2.5rem;
+}
+
+nav {
+  text-align: center;
+  margin: 20px 0;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+  background: #4338ca;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #312e81;
+  transform: translateY(-2px);
+}

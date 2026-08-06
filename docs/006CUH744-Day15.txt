@@ -1,0 +1,1627 @@
+======================================================================
+TASK 1: WHAT IS ANGULAR? EXPLAIN BRIEFLY.
+======================================================================
+
+Definition:
+-----------
+
+Angular is a front-end web application framework developed by Google
+for building dynamic, single-page applications (SPA).
+
+It is based on TypeScript and provides a structured way to develop
+modern, scalable, and maintainable web applications.
+
+Angular follows a component-based architecture where the application
+is divided into reusable components.
+
+======================================================================
+KEY FEATURES OF ANGULAR
+======================================================================
+
+✓ Component-Based Architecture
+
+✓ Two-Way Data Binding
+
+✓ Dependency Injection
+
+✓ Routing
+
+✓ TypeScript Support
+
+✓ Reusable Components
+
+✓ Built-in Testing Support
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+                Angular Application
+                         |
+        +----------------+----------------+
+        |                |                |
+        v                v                v
+
+   Component A     Component B     Component C
+
+        |                |                |
+        +----------------+----------------+
+                         |
+                         v
+
+                     Web Page
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+Angular is a TypeScript-based front-end framework developed by Google
+that is used to create dynamic, scalable, and single-page web
+applications using reusable components.
+
+======================================================================
+TASK 2: WHAT IS DATA BINDING?
+HOW MANY TYPES OF DATA BINDING ARE THERE?
+======================================================================
+
+Definition:
+-----------
+
+Data Binding is the mechanism that synchronizes data between the
+component (TypeScript code) and the view (HTML template).
+
+It helps in transferring data between UI and application logic.
+
+======================================================================
+TYPES OF DATA BINDING IN ANGULAR
+======================================================================
+
+There are 4 Types of Data Binding:
+
+1. Interpolation
+2. Property Binding
+3. Event Binding
+4. Two-Way Binding
+
+======================================================================
+1. INTERPOLATION
+======================================================================
+
+Used to display data from component to HTML.
+
+Syntax:
+
+{{ variableName }}
+
+Example:
+
+Component:
+
+name = "John";
+
+HTML:
+
+<h1>{{name}}</h1>
+
+Output:
+
+John
+
+Flow:
+
+Component --> UI
+
+ASCII:
+
+Component
+    |
+    v
+{{ name }}
+    |
+    v
+ Display Data
+
+======================================================================
+2. PROPERTY BINDING
+======================================================================
+
+Used to bind component data to HTML element properties.
+
+Syntax:
+
+[property]="value"
+
+Example:
+
+<img [src]="imageUrl">
+
+Flow:
+
+Component --> HTML Attribute
+
+ASCII:
+
+Component Value
+        |
+        v
+[src]="imageUrl"
+        |
+        v
+HTML Element
+
+======================================================================
+3. EVENT BINDING
+======================================================================
+
+Used to capture user actions and send them to component.
+
+Syntax:
+
+(event)="method()"
+
+Example:
+
+<button (click)="saveData()">
+
+Flow:
+
+UI --> Component
+
+ASCII:
+
+Button Click
+      |
+      v
+saveData()
+      |
+      v
+Component
+
+======================================================================
+4. TWO-WAY DATA BINDING
+======================================================================
+
+Used for communication in both directions.
+
+Syntax:
+
+[(ngModel)]="value"
+
+Example:
+
+<input [(ngModel)]="username">
+
+Flow:
+
+Component <--> UI
+
+ASCII:
+
+          User Input
+                ^
+                |
+                |
+Component <----> UI
+
+======================================================================
+SUMMARY OF DATA BINDINGS
+======================================================================
+
+            Data Binding
+                  |
+    +-------------+-------------+
+    |             |             |
+    v             v             v
+
+Interpolation  Property      Event
+                                |
+                                v
+
+                         Two-Way Binding
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+Data Binding is the process of synchronizing data between the component
+and the view. Angular provides four types of data binding:
+
+1. Interpolation
+2. Property Binding
+3. Event Binding
+4. Two-Way Binding
+
+======================================================================
+TASK 3: WHY DO WE NEED ANGULAR?
+ADVANTAGES OF ANGULAR
+======================================================================
+
+Why Angular?
+------------
+
+Angular helps developers build enterprise-level web applications
+faster with better structure, maintainability, and performance.
+
+======================================================================
+ADVANTAGES OF ANGULAR
+======================================================================
+
+1. Component-Based Architecture
+-------------------------------
+
+Application is divided into reusable components.
+
+Benefit:
+Easy maintenance and reusability.
+
+------------------------------------------------------
+
+2. TypeScript Support
+---------------------
+
+Provides strong typing and compile-time error checking.
+
+Benefit:
+Reduces bugs.
+
+----------------------------------------------
+======================================================================
+TASK 4: WHAT IS REST API?
+======================================================================
+
+Definition:
+-----------
+
+REST API stands for:
+
+Representational State Transfer Application Programming Interface
+
+It is a set of rules that allows communication between a client
+application and a server using HTTP protocols.
+
+REST APIs transfer data commonly in JSON format.
+
+======================================================================
+COMMON HTTP METHODS
+======================================================================
+
+GET
+----
+Used to retrieve data.
+
+POST
+-----
+Used to create new data.
+
+PUT
+----
+Used to update existing data.
+
+DELETE
+------
+Used to remove data.
+
+======================================================================
+EXAMPLE
+======================================================================
+
+Client Request:
+
+GET /api/employees
+
+Response:
+
+[
+  {
+    "id":1,
+    "name":"John"
+  }
+]
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+      Angular Application
+              |
+              | HTTP Request
+              v
+
+      +----------------+
+      |   REST API     |
+      +----------------+
+              |
+              v
+
+         Database
+
+              ^
+              |
+              |
+
+        JSON Response
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+REST API is an architectural style that enables communication between
+clients and servers using HTTP methods such as GET, POST, PUT, and
+DELETE, usually exchanging data in JSON format.
+
+======================================================================
+TASK 5: WHY DO WE USE REST API?
+======================================================================
+
+Reasons:
+--------
+
+1. Communication between Frontend and Backend.
+
+2. Platform Independent.
+
+3. Easy Data Exchange.
+
+4. Faster Development.
+
+5. Scalable Applications.
+
+6. Standardized Communication using HTTP.
+
+======================================================================
+REAL-TIME FLOW
+======================================================================
+
+ Angular UI
+      |
+      v
+
+  REST API
+      |
+      v
+
+ Backend Server
+      |
+      v
+
+  Database
+
+======================================================================
+BENEFITS
+======================================================================
+
+✓ Lightweight
+
+✓ Easy Integration
+
+✓ Supports Multiple Platforms
+
+✓ Faster Development
+
+✓ Scalable
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+REST APIs are used to exchange data between applications and servers in
+a standardized, scalable, and platform-independent manner.
+
+======================================================================
+TASK 6: WHAT ARE SINGLE PAGE APPLICATIONS (SPA)?
+======================================================================
+
+Definition:
+-----------
+
+A Single Page Application (SPA) is a web application that loads a
+single HTML page and dynamically updates content without refreshing the
+entire page.
+
+Angular is mainly used for developing SPAs.
+
+======================================================================
+HOW SPA WORKS
+======================================================================
+
+Traditional Web App:
+
+Request Page
+     |
+     v
+
+Server
+
+     |
+     v
+
+Entire Page Reload
+
+------------------------------------------------------
+
+Single Page Application:
+
+Request Application
+       |
+       v
+
+Load Once
+
+       |
+       v
+
+Only Required Content Updates
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+      Browser
+          |
+          v
+
+   Angular Application
+          |
+   +------+------+
+   |             |
+   v             v
+
+Home Page   Employee Page
+
+   |
+   v
+
+No Full Page Reload
+
+======================================================================
+ADVANTAGES
+======================================================================
+
+✓ Better User Experience
+
+✓ Faster Navigation
+
+✓ Less Server Load
+
+✓ Smooth Performance
+
+✓ Modern UI Experience
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+A Single Page Application (SPA) loads a single web page and updates
+content dynamically without reloading the entire page, resulting in a
+faster and smoother user experience.
+
+======================================================================
+TASK 7: EXPLAIN MODULES, COMPONENTS AND SERVICES IN ANGULAR
+======================================================================
+
+1. MODULE
+======================================================================
+
+Definition:
+-----------
+
+A module groups related components, services, directives, and pipes.
+
+Main Module:
+
+AppModule
+
+Example:
+
+app.module.ts
+
+Purpose:
+---------
+Organizes the application.
+
+ASCII:
+
+          Module
+             |
+    +--------+--------+
+    |        |        |
+    v        v        v
+
+Components Services Pipes
+
+======================================================================
+2. COMPONENT
+======================================================================
+
+Definition:
+-----------
+
+A Component controls a section of the user interface.
+
+Every Angular application is built using components.
+
+Example:
+
+Header Component
+
+Dashboard Component
+
+Employee Component
+
+ASCII:
+
+         Web Page
+             |
+    +--------+--------+
+    |        |        |
+    v        v        v
+
+ Header  Content  Footer
+
+======================================================================
+3. SERVICE
+======================================================================
+
+Definition:
+-----------
+
+A Service contains reusable business logic and data access code.
+
+Example:
+
+Fetching employee data using REST APIs.
+
+ASCII:
+
+       Component
+            |
+            v
+
+        Service
+            |
+            v
+
+        REST API
+            |
+            v
+
+        Database
+
+======================================================================
+SUMMARY
+======================================================================
+
+Module
+------
+Organizes application structure.
+
+Component
+---------
+Controls UI.
+
+Service
+-------
+Contains business logic and reusable code.
+
+======================================================================
+TASK 8: EXPLAIN TYPES OF DATA BINDING
+======================================================================
+
+Angular Supports 4 Types of Data Binding
+
+1. String Interpolation
+2. Property Binding
+3. Event Binding
+4. Two-Way Data Binding
+
+======================================================================
+1. STRING INTERPOLATION
+======================================================================
+
+Used to display component data inside HTML.
+
+Syntax:
+
+{{ variable }}
+
+Example:
+
+name = "John";
+
+<h1>{{name}}</h1>
+
+Output:
+
+John
+
+Flow:
+
+Component --> View
+
+ASCII:
+
+name="John"
+     |
+     v
+
+ {{name}}
+
+     |
+     v
+
+ Display
+
+======================================================================
+2. PROPERTY BINDING
+======================================================================
+
+Used to bind component data to HTML properties.
+
+Syntax:
+
+[property]="value"
+
+Example:
+
+<img [src]="imageUrl">
+
+Flow:
+
+Component --> HTML Property
+
+ASCII:
+
+Component Data
+      |
+      v
+
+[src]="imageUrl"
+      |
+      v
+
+HTML Element
+
+======================================================================
+3. EVENT BINDING
+======================================================================
+
+Used to capture user events.
+
+Syntax:
+
+(event)="method()"
+
+Example:
+
+<button (click)="save()">
+
+Flow:
+
+UI --> Component
+
+ASCII:
+
+Button Click
+      |
+      v
+
+ save()
+      |
+      v
+
+ Component
+
+======================================================================
+4. TWO-WAY DATA BINDING
+======================================================================
+
+Used for communication in both directions.
+
+Syntax:
+
+[(ngModel)]="username"
+
+Example:
+
+<input [(ngModel)]="username">
+
+Flow:
+
+Component <--> UI
+
+ASCII:
+
+      User
+        ^
+        |
+        |
+
+Component <----> UI
+
+======================================================================
+SUMMARY OF DATA BINDING
+======================================================================
+
+                    Data Binding
+                         |
+         +---------------+---------------+
+         |               |               |
+         v               v               v
+
+ Interpolation      Property        Event
+
+                         |
+                         v
+
+                    Two-Way
+
+======================================================================
+TASK 9: WHAT ARE DECORATORS?
+EXPLAIN TYPES OF DECORATORS
+======================================================================
+
+Definition:
+-----------
+
+Decorators are special functions prefixed with @ symbol used to add
+metadata to classes, properties, methods, or parameters.
+
+Angular uses decorators extensively.
+
+======================================================================
+TYPES OF DECORATORS
+======================================================================
+
+1. Class Decorator
+
+Example:
+
+@Component()
+@NgModule()
+@Injectable()
+
+Purpose:
+Used on classes.
+
+------------------------------------------------------
+
+2. Property Decorator
+
+Example:
+
+@Input()
+@Output()
+
+Purpose:
+Used on properties.
+
+------------------------------------------------------
+
+3. Method Decorator
+
+Example:
+
+@HostListener()
+
+Purpose:
+Used on methods.
+
+------------------------------------------------------
+
+4. Parameter Decorator
+
+Example:
+
+@Inject()
+
+Purpose:
+Used on constructor parameters.
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+                 Decorators
+                      |
+     +----------------+----------------+
+     |                |                |
+     v                v                v
+
+   Class         Property         Method
+                                      
+                      |
+                      v
+
+                 Parameter
+
+======================================================================
+EXAMPLE
+======================================================================
+
+@Component({
+ selector:'app-root'
+})
+
+export class AppComponent {
+
+}
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+Decorators are special annotations prefixed with @ used to provide
+metadata to classes, methods, properties, and parameters in Angular.
+
+======================================================================
+TASK 10: WHAT ARE ANNOTATIONS IN ANGULAR?
+======================================================================
+
+Definition:
+-----------
+
+Annotations are metadata that provide additional information about a
+class so Angular knows how to process it.
+
+Decorators act as annotations in Angular.
+
+Examples:
+
+@Component
+
+@NgModule
+
+@Injectable
+
+@Directive
+
+@Pipe
+
+======================================================================
+EXAMPLE
+======================================================================
+
+@Component({
+   selector:'app-home',
+   templateUrl:'./home.component.html'
+})
+
+export class HomeComponent {
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+         @Component
+               |
+               v
+
+      Angular Component
+
+               |
+               v
+
+      Angular Understands
+
+      - Selector
+      - Template
+      - Styles
+      - Metadata
+
+======================================================================
+DIFFERENCE BETWEEN DECORATOR & ANNOTATION
+======================================================================
+
+Annotation
+----------
+Provides metadata information.
+
+Decorator
+---------
+Mechanism used to apply metadata.
+
+In Angular interviews, both terms are often used interchangeably.
+
+======================================================================
+SHORT ANSWER
+======================================================================
+
+Annotations are metadata attached to Angular classes using decorators
+such as @Component, @NgModule, and @Injectable. They help Angular
+understand how a class should behave and be processed.
+
+======================================================================
+======================================================================
+TASK 11: IN THE BELOW CODE SNIPPET WHAT ARE WE DOING?
+CAN YOU EXPLAIN?
+======================================================================
+
+QUESTION:
+----------
+
+In the below code snippet what are we doing?
+Can you explain?
+
+CODE:
+------
+
+// Parent Component
+
+import { Component } from '@angular/core';
+
+@Component({
+   selector: 'app-parent',
+   template: `
+      <app-child
+         [childMessage]="parentMessage">
+      </app-child>
+   `
+})
+export class ParentComponent {
+
+   parentMessage = "message from parent";
+
+   constructor() { }
+
+}
+
+
+// Child Component
+
+import { Component, Input } from '@angular/core';
+
+@Component({
+   selector: 'app-child',
+   template: `
+      Say {{ childMessage }}
+   `
+})
+export class ChildComponent {
+
+   @Input()
+   childMessage: string;
+
+   constructor() { }
+
+}
+
+======================================================================
+WHAT ARE WE DOING HERE?
+======================================================================
+
+This example demonstrates:
+
+✓ Parent To Child Communication
+
+✓ @Input() Decorator
+
+✓ Property Binding
+
+✓ String Interpolation
+
+======================================================================
+STEP BY STEP FLOW
+======================================================================
+
+1. Parent component contains:
+
+parentMessage = "message from parent"
+
+--------------------------------------------------
+
+2. Parent passes data to child:
+
+<app-child
+   [childMessage]="parentMessage">
+</app-child>
+
+Here:
+
+[childMessage]
+
+is Property Binding.
+
+--------------------------------------------------
+
+3. Child component receives data using:
+
+@Input()
+childMessage: string;
+
+@Input() allows child component to receive data from the parent.
+
+--------------------------------------------------
+
+4. Child displays the data using:
+
+{{ childMessage }}
+
+This is String Interpolation.
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+Parent Component
+
+parentMessage
+=
+"message from parent"
+
+         |
+         |
+         v
+
+[childMessage]="parentMessage"
+
+         |
+         |
+         v
+
+Child Component
+
+@Input()
+childMessage
+
+         |
+         |
+         v
+
+{{ childMessage }}
+
+         |
+         |
+         v
+
+Say message from parent
+
+======================================================================
+OUTPUT
+======================================================================
+
+Say message from parent
+
+
+
+======================================================================
+TASK 12: CAN YOU CREATE A TYPESCRIPT CLASS WITH A CONSTRUCTOR AND A FUNCTION?
+======================================================================
+
+
+
+class Employee {
+
+    id: number;
+    name: string;
+
+    // Constructor
+
+    constructor(id: number, name: string) {
+
+        this.id = id;
+        this.name = name;
+
+    }
+
+    // Function
+
+    displayEmployee(): void {
+
+        console.log(
+            "Employee ID: " + this.id
+        );
+
+        console.log(
+            "Employee Name: " + this.name
+        );
+
+    }
+
+}
+
+let emp = new Employee(101, "John");
+
+emp.displayEmployee();
+
+======================================================================
+OUTPUT
+======================================================================
+
+Employee ID: 101
+
+Employee Name: John
+
+======================================================================
+EXPLANATION
+======================================================================
+
+Constructor:
+------------
+Used for initializing object values when an object is created.
+
+Function:
+---------
+Used to perform operations on object data.
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+              Employee
+                   |
+      +------------+------------+
+      |                         |
+      v                         v
+
+ Constructor            displayEmployee()
+
+      |                         |
+      v                         v
+
+ Initialize Data        Display Data
+
+======================================================================
+INTERVIEW ANSWER
+======================================================================
+
+A constructor is automatically executed when an object is created and is
+used for initialization. A function (method) contains the business
+logic that operates on the object's data.
+
+======================================================================
+TASK 13: THERE IS SOMETHING CALLED EAGER LOADING.
+WHAT DO YOU MEAN BY EAGER AND LAZY LOADING?
+======================================================================
+
+
+======================================================================
+EAGER LOADING
+======================================================================
+
+Definition:
+-----------
+
+Eager Loading means loading all modules when the application starts.
+
+Example:
+--------
+
+
+import { AdminModule } from './admin/admin.module';
+
+@NgModule({
+   imports: [
+      AdminModule
+   ]
+})
+export class AppModule { }
+
+======================================================================
+FLOW
+======================================================================
+
+Application Starts
+        |
+        v
+
+Module A Loaded
+
+Module B Loaded
+
+Module C Loaded
+
+        |
+        v
+
+Application Ready
+
+======================================================================
+ADVANTAGES
+======================================================================
+
+✓ Easy to Configure
+
+✓ Modules Available Immediately
+
+======================================================================
+DISADVANTAGES
+======================================================================
+
+✗ Slower Initial Load
+
+✗ Bigger Bundle Size
+
+======================================================================
+LAZY LOADING
+======================================================================
+
+Definition:
+-----------
+
+Lazy Loading means loading modules only when they are required.
+
+
+
+const routes = [
+
+{
+   path: 'admin',
+
+   loadChildren: () =>
+      import('./admin/admin.module')
+      .then(m => m.AdminModule)
+
+}
+
+];
+
+======================================================================
+FLOW
+======================================================================
+
+Application Starts
+
+        |
+        v
+
+Home Module Loaded
+
+        |
+        |
+
+User Opens Admin Page
+
+        |
+        v
+
+Admin Module Loaded
+
+======================================================================
+ADVANTAGES
+======================================================================
+
+✓ Faster Application Startup
+
+✓ Smaller Initial Bundle
+
+✓ Better Performance
+
+✓ Recommended For Large Applications
+
+======================================================================
+DISADVANTAGES
+======================================================================
+
+✗ First Access May Be Slightly Slower
+
+======================================================================
+ASCII COMPARISON
+======================================================================
+
+                    Angular Application
+                             |
+              +--------------+--------------+
+              |                             |
+              v                             v
+
+         Eager Loading                Lazy Loading
+
+         Load All Modules             Load When Needed
+
+         Startup Slow                 Startup Fast
+
+         Large Bundle                 Smaller Bundle
+
+======================================================================
+INTERVIEW ANSWER
+======================================================================
+
+Eager Loading loads all modules when the Angular application starts,
+whereas Lazy Loading loads modules only when users navigate to them.
+Lazy Loading improves performance by reducing the initial application
+load time.
+
+======================================================================
+======================================================================
+TASK 14: WHAT IS AN OBSERVABLE RESPONSE?
+======================================================================
+
+EXPLANATION:
+------------
+
+An Observable is an RxJS feature used for handling asynchronous data
+such as API calls, user events, timers, and real-time updates.
+
+Angular's HttpClient returns Observables. To receive the data, we use
+subscribe().
+
+CODE:
+------
+
+import { HttpClient } from '@angular/common/http';
+
+export class EmployeeComponent {
+
+   constructor(private http: HttpClient) { }
+
+   getEmployees() {
+
+      this.http.get('http://localhost:8080/employees')
+         .subscribe(response => {
+
+            console.log(response);
+
+         });
+
+   }
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+Angular Component
+        |
+        v
+
+ HttpClient.get()
+
+        |
+        v
+
+    Observable
+
+        |
+        v
+
+   subscribe()
+
+        |
+        v
+
+    Response
+
+        |
+        v
+
+ Display Result
+
+======================================================================
+======================================================================
+TASK 15: WHAT IS THE FLOW OF YOUR ANGULAR PROJECT?
+EXPLAIN WITH AN EXAMPLE.
+======================================================================
+
+EXPLANATION:
+------------
+
+A typical Angular application follows a layered architecture.
+
+The flow generally starts from the User Interface (UI), moves through
+the Component and Service layers, communicates with the Backend through
+a REST API, retrieves data from the Database, and then sends the
+response back to the UI.
+
+FLOW:
+------
+
+User
+  |
+  v
+
+Component
+
+  |
+  v
+
+Service
+
+  |
+  v
+
+REST API
+
+  |
+  v
+
+Backend
+
+  |
+  v
+
+Database
+
+  |
+  v
+
+Response
+
+  |
+  v
+
+Service
+
+  |
+  v
+
+Component
+
+  |
+  v
+
+HTML View
+
+======================================================================
+EXAMPLE: DISPLAY EMPLOYEE DATA
+======================================================================
+
+employee.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from './employee.service';
+
+export class EmployeeComponent implements OnInit {
+
+   employees: any[] = [];
+
+   constructor(
+      private employeeService: EmployeeService
+   ) { }
+
+   ngOnInit() {
+
+      this.employeeService
+          .getEmployees()
+          .subscribe(data => {
+
+              this.employees = data;
+
+          });
+
+   }
+
+}
+
+---------------------------------------------------------------------
+
+employee.service.ts
+
+import { HttpClient } from '@angular/common/http';
+
+export class EmployeeService {
+
+   constructor(
+      private http: HttpClient
+   ) { }
+
+   getEmployees() {
+
+      return this.http.get(
+         'http://localhost:8080/employees'
+      );
+
+   }
+
+}
+
+---------------------------------------------------------------------
+
+employee.component.html
+
+<ul>
+
+   <li *ngFor="let emp of employees">
+
+      {{ emp.name }}
+
+   </li>
+
+</ul>
+
+======================================================================
+STEP BY STEP EXECUTION
+======================================================================
+
+1. User opens Employee Page.
+
+2. EmployeeComponent is loaded.
+
+3. ngOnInit() gets executed.
+
+4. EmployeeComponent calls EmployeeService.
+
+5. EmployeeService sends HTTP request using HttpClient.
+
+6. REST API receives the request.
+
+7. Backend accesses the database.
+
+8. Database returns employee records.
+
+9. REST API sends JSON response.
+
+10. Service receives the response.
+
+11. Component gets the data through subscribe().
+
+12. HTML page displays the employee list.
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
++---------+
+|  USER   |
++---------+
+     |
+     v
+
++----------------------+
+| Employee Component   |
++----------------------+
+     |
+     v
+
++----------------------+
+| Employee Service     |
++----------------------+
+     |
+     v
+
++----------------------+
+|      REST API        |
++----------------------+
+     |
+     v
+
++----------------------+
+|      BACKEND         |
++----------------------+
+     |
+     v
+
++----------------------+
+|      DATABASE        |
++----------------------+
+
+     ^
+     |
+     |
+
+ Employee Data (JSON)
+
+     |
+     v
+
++----------------------+
+| Employee Service     |
++----------------------+
+     |
+     v
+
++----------------------+
+| Employee Component   |
++----------------------+
+     |
+     v
+
++----------------------+
+| Employee HTML Page   |
++----------------------+
+
+======================================================================
+OUTPUT
+======================================================================
+
+John
+
+David
+
+Alex
+
+======================================================================
+END OF TASK 15
+
+

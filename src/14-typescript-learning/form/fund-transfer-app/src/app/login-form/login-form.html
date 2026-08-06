@@ -1,0 +1,34 @@
+<h2>Fund Transfer Form</h2>
+
+<form [formGroup]="transferForm">
+
+  <input
+    type="text"
+    placeholder="From Account"
+    formControlName="fromAccount">
+
+  <br><br>
+
+  <input
+    type="text"
+    placeholder="To Account"
+    formControlName="toAccount">
+
+  <br><br>
+
+  <input
+    type="number"
+    placeholder="Amount"
+    formControlName="amount">
+
+  <br><br>
+
+  <button
+    type="button"
+    (click)="transfer()">
+
+    Transfer
+
+  </button>
+
+</form>

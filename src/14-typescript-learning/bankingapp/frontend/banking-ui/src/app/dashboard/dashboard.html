@@ -1,0 +1,24 @@
+<div class="dashboard-card">
+
+    <h2>Fund Transfer</h2>
+
+    <p class="balance">
+        Available Balance : ₹{{ balance }}
+    </p>
+
+    <label>
+        Enter Transfer Amount
+    </label>
+
+    <input
+        type="number"
+        [(ngModel)]="transferAmount"
+        placeholder="Enter amount">
+
+    <button (click)="doTransfer()">
+        Transfer Funds
+    </button>
+
+    <p>{{ message }}</p>
+
+</div>

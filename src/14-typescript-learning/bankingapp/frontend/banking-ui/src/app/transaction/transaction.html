@@ -1,0 +1,14 @@
+<div class="transaction-card">
+
+    <h2>Recent Transactions</h2>
+
+    <ul>
+        <li *ngFor="let txn of transactions">
+ *          {{ txn.date }}
+         *  -
+            ₹{{ txn.amount }}
+*       </li>
+    </ul>
+
+</div>
+```*
