@@ -1,0 +1,98 @@
+<h2>Fund Transfer Form</h2>
+
+<form [formGroup]="transferForm">
+
+    <div>
+
+        <label for="fromAccount">
+            From Account
+        </label>
+
+        <input
+            id="fromAccount"
+            type="text"
+            formControlName="fromAccount"
+            placeholder="Enter Sender Account Number">
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <label for="toAccount">
+            To Account
+        </label>
+
+        <input
+            id="toAccount"
+            type="text"
+            formControlName="toAccount"
+            placeholder="Enter Receiver Account Number">
+
+    </div>
+
+    <br>
+
+    <div>
+
+        <label for="amount">
+            Transfer Amount
+        </label>
+
+        <input
+            id="amount"
+            type="number"
+            formControlName="amount"
+            placeholder="Enter Transfer Amount">
+
+        <div
+            class="error-message"
+            *ngIf="transferForm.get('amount')?.errors?.['min']">
+
+            Minimum transfer amount is ₹100
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <button
+        type="button"
+        (click)="transfer()">
+
+        Transfer Funds
+
+    </button>
+
+</form>
+
+<div
+    class="success-message"
+    *ngIf="message">
+
+    {{ message }}
+
+</div>
+
+<div class="masked-section">
+
+    <h3>Transfer Summary</h3>
+
+    <p>
+        <strong>From Account:</strong>
+        {{ transferForm.get('fromAccount')?.value | accountMask }}
+    </p>
+
+    <p>
+        <strong>To Account:</strong>
+        {{ transferForm.get('toAccount')?.value | accountMask }}
+    </p>
+
+    <p>
+        <strong>Amount:</strong>
+        {{ transferForm.get('amount')?.value | currency:'INR' }}
+    </p>
+
+</div>

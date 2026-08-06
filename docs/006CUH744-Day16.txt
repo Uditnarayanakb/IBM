@@ -1,0 +1,656 @@
+======================================================================
+DAY 16 - ANGULAR REVISION NOTES
+Date : 06-Aug-2026
+======================================================================
+
+OBJECTIVE
+----------------------------------------------------------------------
+
+Learned:
+
+1. Custom Pipes
+2. Currency Pipe
+3. Services
+4. Dependency Injection
+5. HttpClient
+6. CRUD Operations
+7. Authentication
+8. Route Guards
+9. Shared Module
+10. Auth Module
+
+
+======================================================================
+TASK 1 : CUSTOM PIPE
+======================================================================
+
+Requirement:
+------------
+
+Mask Account Number
+
+Example:
+
+1234567890123456
+
+↓
+
+********3456
+
+
+Concept:
+--------
+
+Custom Pipe
+
+
+File:
+-----
+
+account-mask.pipe.ts
+
+
+Most Important Code:
+--------------------
+
+@Pipe({
+  name: 'accountMask',
+  standalone: true
+})
+
+export class AccountMaskPipe
+implements PipeTransform
+
+
+transform(accountNumber: string): string
+
+
+Usage:
+------
+
+{{ accountNumber | accountMask }}
+
+
+Learning:
+---------
+
+✓ @Pipe Decorator
+
+✓ PipeTransform
+
+✓ Data Transformation
+
+✓ Custom Pipes
+
+
+Flow:
+-----
+
+Account Number
+      |
+      v
+ AccountMaskPipe
+      |
+      v
+ ********3456
+
+
+======================================================================
+TASK 2 : CURRENCY PIPE
+======================================================================
+
+Requirement:
+------------
+
+Display Transfer Amount as INR Currency
+
+
+Concept:
+--------
+
+Built-In Pipe
+
+
+Files:
+------
+
+login-form.component.ts
+
+login-form.component.html
+
+
+Most Important Code:
+--------------------
+
+import {
+  CurrencyPipe
+}
+from '@angular/common';
+
+
+imports: [
+  CurrencyPipe
+]
+
+
+{{ amount | currency:'INR' }}
+
+
+Input:
+------
+
+1234
+
+
+Output:
+-------
+
+₹1,234.00
+
+
+Learning:
+---------
+
+✓ Built-In Pipes
+
+✓ Currency Formatting
+
+✓ Standalone Imports
+
+
+Flow:
+-----
+
+1000
+  |
+  v
+Currency Pipe
+  |
+  v
+₹1,000.00
+
+
+======================================================================
+TASK 3 : BANKING SERVICE
+======================================================================
+
+Requirement:
+------------
+
+Create Banking Service
+
+Support CRUD Operations
+
+GET
+
+POST
+
+PATCH
+
+DELETE
+
+
+Concepts:
+---------
+
+Service
+
+Dependency Injection
+
+HttpClient
+
+CRUD
+
+
+File:
+-----
+
+banking.service.ts
+
+
+Most Important Code:
+--------------------
+
+import {
+  HttpClient
+}
+from '@angular/common/http';
+
+
+constructor(
+ private http: HttpClient
+)
+
+
+GET
+
+this.http.get()
+
+
+POST
+
+this.http.post()
+
+
+PATCH
+
+this.http.patch()
+
+
+DELETE
+
+this.http.delete()
+
+
+CRUD Summary:
+-------------
+
+GET
+
+getAccounts()
+
+POST
+
+addAccount()
+
+PATCH
+
+updateAccount()
+
+DELETE
+
+deleteAccount()
+
+
+Learning:
+---------
+
+✓ Service Layer
+
+✓ HttpClient
+
+✓ Observables
+
+✓ CRUD
+
+✓ Dependency Injection
+
+
+Architecture:
+-------------
+
+Component
+    |
+    v
+BankingService
+    |
+    v
+HttpClient
+    |
+    v
+Backend API
+
+
+======================================================================
+DEPENDENCY INJECTION
+======================================================================
+
+Concept:
+--------
+
+Angular automatically provides required objects.
+
+
+Instead of:
+-----------
+
+new BankingService()
+
+
+Use:
+----
+
+constructor(
+ private bankingService:
+ BankingService
+)
+
+
+Learning:
+---------
+
+✓ Loose Coupling
+
+✓ Cleaner Code
+
+✓ Reusability
+
+
+Flow:
+-----
+
+Angular
+   |
+   v
+Creates Service
+   |
+   v
+Injects Into Component
+
+
+======================================================================
+TASK 4 : AUTHENTICATION
+======================================================================
+
+Requirement:
+------------
+
+Validate Username & Password
+
+
+Concept:
+--------
+
+Authentication
+
+
+File:
+-----
+
+auth.service.ts
+
+
+Most Important Code:
+--------------------
+
+@Injectable({
+ providedIn: 'root'
+})
+
+
+
+login(
+ username: string,
+ password: string
+): boolean
+
+
+
+logout()
+
+
+
+isLoggedIn()
+
+
+Credentials:
+------------
+
+Username
+
+user
+
+Password
+
+pass123
+
+
+Learning:
+---------
+
+✓ Authentication
+
+✓ Service Layer
+
+✓ Login Logic
+
+
+Flow:
+-----
+
+User
+  |
+  v
+Login Request
+  |
+  v
+AuthService
+  |
+ +--------+
+ |        |
+Valid   Invalid
+
+
+======================================================================
+TASK 4 PART-B : AUTH GUARD
+======================================================================
+
+Requirement:
+------------
+
+Protect Transaction Page
+
+
+Concept:
+--------
+
+Authorization
+
+Route Guard
+
+
+File:
+-----
+
+auth.guard.ts
+
+
+Most Important Code:
+--------------------
+
+CanActivate
+
+
+
+canActivate()
+
+
+
+authService
+.isLoggedIn()
+
+
+Learning:
+---------
+
+✓ Authorization
+
+✓ Route Protection
+
+✓ Guards
+
+
+Flow:
+-----
+
+User Requests Route
+         |
+         v
+     AuthGuard
+         |
+    +----+----+
+    |         |
+  TRUE      FALSE
+    |         |
+    v         v
+Allow      Redirect
+
+
+Protected Route:
+----------------
+
+/transfer
+
+
+======================================================================
+TASK 5 : SHARED MODULE
+======================================================================
+
+Requirement:
+------------
+
+Bundle Reusable Pipes
+
+
+Concept:
+--------
+
+Shared Module
+
+
+File:
+-----
+
+shared.module.ts
+
+
+Most Important Code:
+--------------------
+
+@NgModule({
+
+ imports: [
+  AccountMaskPipe
+ ],
+
+ exports: [
+  AccountMaskPipe
+ ]
+
+})
+
+
+Purpose:
+--------
+
+Reusable Resources
+
+Example:
+
+Pipes
+
+Directives
+
+Common Components
+
+
+Current Resource:
+-----------------
+
+AccountMaskPipe
+
+
+Learning:
+---------
+
+✓ Module Structure
+
+✓ Reusability
+
+✓ Centralized Resources
+
+
+Diagram:
+---------
+
+SharedModule
+      |
+      v
+AccountMaskPipe
+      |
+      v
+Components
+
+
+======================================================================
+TASK 6 : AUTH MODULE
+======================================================================
+
+Requirement:
+------------
+
+Group Authentication Features
+
+
+Concept:
+--------
+
+Feature Module
+
+
+File:
+-----
+
+auth.module.ts
+
+
+Most Important Code:
+--------------------
+
+@NgModule({
+
+ imports: [
+  LoginComponent
+ ],
+
+ exports: [
+  LoginComponent
+ ]
+
+})
+
+
+Purpose:
+--------
+
+Keep Authentication Features Together
+
+
+Contains:
+----------
+
+LoginComponent
+
+AuthService
+
+AuthGuard
+
+
+Future:
+-------
+
+RegisterComponent
+
+
+Learning:
+---------
+
+✓ Feature Modules
+
+✓ Code Organization
+
+✓ Auth Architecture
+
+
+Diagram:
+---------
+
+AuthModule
+    |
+    +------ LoginComponent
+    |
+    +------ AuthService
+    |
+    +------ AuthGuard
+
+    

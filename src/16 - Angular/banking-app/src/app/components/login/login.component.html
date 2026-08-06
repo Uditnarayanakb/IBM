@@ -1,0 +1,31 @@
+<h2>Login</h2>
+
+<div class="login-card">
+
+    <input
+        type="text"
+        placeholder="Username"
+        [(ngModel)]="username">
+
+    <br><br>
+
+    <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password">
+
+    <br><br>
+
+    <button
+        type="button"
+        (click)="login()">
+
+        Login
+
+    </button>
+
+    <br><br>
+
+    <p>{{ message }}</p>
+
+</div>

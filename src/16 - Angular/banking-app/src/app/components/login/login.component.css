@@ -1,0 +1,32 @@
+.login-card {
+    width: 350px;
+    margin: 50px auto;
+    background: #111111;
+    padding: 25px;
+    border-radius: 12px;
+}
+p {
+    color: white;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: #1e1e1e;
+    color: white;
+    border: 1px solid #333333;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #222222;
+    color: white;
+    border: none;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
