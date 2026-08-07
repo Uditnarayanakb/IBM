@@ -1,0 +1,1816 @@
+======================================================================
+TASK 1: WHAT IS DATA BINDING?
+======================================================================
+
+EXPLANATION:
+------------
+
+Data Binding is the process of connecting data between the User
+Interface (UI) and the application logic.
+
+It helps display data on the screen and also allows the application
+to receive user input.
+
+In React, data binding is achieved using:
+
+✓ Props
+
+✓ State
+
+✓ Event Handling
+
+Data can flow from the component to the UI or from the UI back to the
+component.
+
+======================================================================
+EXAMPLE
+======================================================================
+
+function App() {
+
+   const name = "John";
+
+   return (
+
+      <h1>{name}</h1>
+
+   );
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+      Component Data
+             |
+             v
+
+         React UI
+
+             |
+
+         Displayed
+          To User
+
+======================================================================
+OUTPUT
+======================================================================
+
+John
+
+======================================================================
+END OF TASK 1
+======================================================================
+
+
+
+======================================================================
+TASK 2: WHAT DO YOU UNDERSTAND BY ONE WAY DATA BINDING AND TWO WAY
+DATA BINDING?
+======================================================================
+
+EXPLANATION:
+------------
+
+One-Way Data Binding means data flows in only one direction.
+
+Two-Way Data Binding means data flows in both directions between
+the UI and the component.
+
+======================================================================
+ONE-WAY DATA BINDING
+======================================================================
+
+Data flows:
+
+Component --> UI
+
+Changes in the component automatically update the UI.
+
+CODE:
+------
+
+function App() {
+
+   const name = "John";
+
+   return (
+
+      <h1>{name}</h1>
+
+   );
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+   Component Data
+         |
+         v
+
+         UI
+
+======================================================================
+OUTPUT
+======================================================================
+
+John
+
+======================================================================
+TWO-WAY DATA BINDING
+======================================================================
+
+Data flows:
+
+Component <--> UI
+
+React does not provide automatic two-way binding like Angular.
+
+We achieve it using:
+
+✓ useState()
+
+✓ onChange()
+
+CODE:
+------
+
+import { useState } from 'react';
+
+function App() {
+
+   const [name, setName] = useState("");
+
+   return (
+
+      <input
+         value={name}
+         onChange={(e) => setName(e.target.value)}
+      />
+
+   );
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+          User Input
+               ^
+               |
+               |
+
+Component <----> UI
+
+======================================================================
+HOW IT WORKS
+======================================================================
+
+User types text
+
+      |
+      v
+
+onChange()
+
+      |
+      v
+
+setName()
+
+      |
+      v
+
+State Updated
+
+      |
+      v
+
+UI Updated
+
+======================================================================
+END OF TASK 2
+======================================================================
+
+
+
+======================================================================
+TASK 3: WHEN DO YOU USE ONE WAY DATA BINDING AND WHEN TO USE TWO WAY
+DATA BINDING? GIVE EXAMPLES.
+======================================================================
+
+======================================================================
+USE ONE-WAY DATA BINDING
+======================================================================
+
+When data only needs to be displayed.
+
+Examples:
+
+✓ Product Details
+
+✓ Employee Information
+
+✓ User Profile
+
+✓ Dashboard Reports
+
+CODE:
+------
+
+function Employee() {
+
+   const employeeName = "John";
+
+   return (
+
+      <h2>{employeeName}</h2>
+
+   );
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+Employee Data
+      |
+      v
+
+React Component
+      |
+      v
+
+Display Data
+
+======================================================================
+OUTPUT
+======================================================================
+
+John
+
+======================================================================
+USE TWO-WAY DATA BINDING
+======================================================================
+
+When user input should update component state and the updated state
+should be reflected back in the UI.
+
+Examples:
+
+✓ Login Form
+
+✓ Registration Form
+
+✓ Search Box
+
+✓ Feedback Form
+
+✓ Profile Update Screen
+
+CODE:
+------
+
+import { useState } from 'react';
+
+function Login() {
+
+   const [username, setUsername] = useState("");
+
+   return (
+
+      <div>
+
+         <input
+            value={username}
+            onChange={(e) =>
+               setUsername(e.target.value)
+            }
+         />
+
+         <h3>{username}</h3>
+
+      </div>
+
+   );
+
+}
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+      User Types
+            |
+            v
+
+         Input Box
+
+            |
+            v
+
+        onChange()
+
+            |
+            v
+
+        useState()
+
+            |
+            v
+
+      Component State
+
+            |
+            v
+
+        UI Updated
+
+======================================================================
+OUTPUT
+======================================================================
+
+Input:
+
+Alex
+
+Output:
+
+Alex
+
+======================================================================
+COMPARISON
+======================================================================
+
+                 Data Binding
+                        |
+          +-------------+-------------+
+          |                           |
+          v                           v
+
+    One-Way Binding           Two-Way Binding
+
+    Component --> UI          Component <--> UI
+
+    Display Data              Forms & User Input
+
+    Simple                    Interactive
+
+======================================================================
+
+======================================================================
+TASK 4: WHAT IS THE STATE IN REACT?
+======================================================================
+
+EXPLANATION:
+------------
+
+State is a built-in React object used to store and manage data that can
+change over time.
+
+When state changes, React automatically re-renders the component and
+updates the UI.
+
+State is mutable, meaning its value can be updated.
+
+React commonly uses the useState() Hook to manage state.
+
+CODE:
+------
+
+import { useState } from 'react';
+
+function Counter() {
+
+   const [count, setCount] = useState(0);
+
+   return (
+
+      <div>
+
+         <h1>{count}</h1>
+
+         <button
+            onClick={() => setCount(count + 1)}
+         >
+            Increment
+         </button>
+
+      </div>
+
+   );
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+      State
+        |
+        v
+
+   Component
+
+        |
+        v
+
+       UI
+
+        ^
+        |
+        |
+
+  State Changes
+
+OUTPUT:
+--------
+
+0
+
+Click Button
+
+1
+
+2
+
+3
+
+...
+
+======================================================================
+END OF TASK 4
+======================================================================
+
+
+
+======================================================================
+TASK 5: CAN YOU EXPLAIN SPA?
+======================================================================
+
+EXPLANATION:
+------------
+
+SPA stands for Single Page Application.
+
+A Single Page Application loads only one HTML page initially and updates
+content dynamically without refreshing the entire page.
+
+React is primarily used to build SPAs.
+
+Instead of loading a new page from the server every time, React updates
+only the required part of the UI.
+
+ADVANTAGES:
+-----------
+
+✓ Faster Navigation
+
+✓ Better User Experience
+
+✓ Reduced Server Requests
+
+✓ Smooth Page Transitions
+
+ASCII REPRESENTATION:
+---------------------
+
+Traditional Web App
+
+Browser
+   |
+   v
+
+Request Page
+
+   |
+   v
+
+Server
+
+   |
+   v
+
+Full Page Reload
+
+
+--------------------------------------------------
+
+React SPA
+
+Browser
+
+   |
+   v
+
+React Application
+
+   |
+   +--------+
+   |        |
+   v        v
+
+ Home    Profile
+
+   |
+   v
+
+No Full Page Reload
+
+EXAMPLE:
+---------
+
+Instagram
+
+Facebook
+
+Gmail
+
+Netflix
+
+======================================================================
+END OF TASK 5
+======================================================================
+
+
+
+======================================================================
+TASK 6: WHAT IS DOM?
+======================================================================
+
+EXPLANATION:
+------------
+
+DOM stands for Document Object Model.
+
+The browser converts HTML into a tree-like structure called the DOM.
+
+JavaScript can access and manipulate the DOM to update the webpage.
+
+EXAMPLE:
+---------
+
+HTML
+
+<h1>Hello React</h1>
+
+DOM
+
+Document
+   |
+   v
+
+html
+ |
+ v
+
+body
+ |
+ v
+
+h1
+
+ASCII REPRESENTATION:
+---------------------
+
+        Document
+            |
+            v
+
+          HTML
+            |
+            v
+
+          BODY
+            |
+            v
+
+            H1
+
+            |
+            v
+
+       Hello React
+
+PURPOSE:
+---------
+
+✓ Represents webpage structure
+
+✓ Allows JavaScript to manipulate HTML
+
+✓ Enables dynamic content updates
+
+======================================================================
+END OF TASK 6
+======================================================================
+
+
+
+======================================================================
+TASK 7: WHAT IS VIRTUAL DOM?
+======================================================================
+
+EXPLANATION:
+------------
+
+Virtual DOM is a lightweight copy of the Real DOM maintained by React.
+
+When data changes:
+
+1. React creates a new Virtual DOM.
+2. React compares it with the previous Virtual DOM.
+3. React identifies the changed elements.
+4. React updates only those elements in the Real DOM.
+
+This process is called Reconciliation.
+
+ADVANTAGES:
+-----------
+
+✓ Faster Rendering
+
+✓ Better Performance
+
+✓ Fewer DOM Manipulations
+
+✓ Improved User Experience
+
+ASCII REPRESENTATION:
+---------------------
+
+             State Change
+                   |
+                   v
+
+             Virtual DOM
+
+                   |
+                   v
+
+             Compare Old
+             And New DOM
+
+                   |
+                   v
+
+            Find Changes
+
+                   |
+                   v
+
+              Real DOM
+              Update
+
+FLOW:
+------
+
+State Change
+
+     |
+     v
+
+Virtual DOM
+
+     |
+     v
+
+Diffing
+
+     |
+     v
+
+Update Real DOM
+
+======================================================================
+END OF TASK 7
+======================================================================
+
+
+
+======================================================================
+TASK 8: WHAT ARE PROPS IN REACT? CAN YOU EXPLAIN ABOUT PROP DRILLING?
+======================================================================
+
+EXPLANATION:
+------------
+
+Props stands for Properties.
+
+Props are used to pass data from a Parent Component to a Child
+Component.
+
+Props are read-only and cannot be modified by the Child Component.
+
+CODE:
+------
+
+function Child(props) {
+
+   return (
+
+      <h2>{props.name}</h2>
+
+   );
+
+}
+
+function App() {
+
+   return (
+
+      <Child name="John" />
+
+   );
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+Parent Component
+
+        |
+        |
+
+ name="John"
+
+        |
+        v
+
+Child Component
+
+        |
+        v
+
+ Display Data
+
+OUTPUT:
+--------
+
+John
+
+======================================================================
+PROP DRILLING
+======================================================================
+
+EXPLANATION:
+------------
+
+Prop Drilling occurs when props are passed through multiple components
+just to reach a deeply nested component.
+
+CODE:
+------
+
+function App() {
+
+   return <Parent user="John" />;
+
+}
+
+function Parent({ user }) {
+
+   return <Child user={user} />;
+
+}
+
+function Child({ user }) {
+
+   return <GrandChild user={user} />;
+
+}
+
+function GrandChild({ user }) {
+
+   return <h1>{user}</h1>;
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+App
+
+ |
+ v
+
+Parent
+
+ |
+ v
+
+Child
+
+ |
+ v
+
+GrandChild
+
+Even though Parent and Child don't use the data, they pass it down.
+
+SOLUTION:
+----------
+
+✓ Context API
+
+✓ Redux
+
+✓ Zustand
+
+======================================================================
+END OF TASK 8
+======================================================================
+
+
+
+======================================================================
+TASK 9: WHY DO WE USE REACT? GIVE IMPORTANCE AND DESCRIBE IN DETAIL.
+======================================================================
+
+EXPLANATION:
+------------
+
+React is a JavaScript Library developed by Facebook for building modern,
+interactive, and fast User Interfaces.
+
+React helps developers build scalable Single Page Applications using a
+Component-Based Architecture.
+
+IMPORTANCE OF REACT:
+--------------------
+
+1. COMPONENT REUSABILITY
+------------------------
+
+Components can be created once and reused multiple times.
+
+Example:
+
+Navbar
+
+Footer
+
+Sidebar
+
+Button
+
+2. VIRTUAL DOM
+--------------
+
+React uses Virtual DOM to improve performance.
+
+Only changed elements are updated.
+
+3. FAST RENDERING
+-----------------
+
+Minimizes direct DOM manipulation.
+
+Provides better application performance.
+
+4. SINGLE PAGE APPLICATIONS
+---------------------------
+
+Supports dynamic page updates without full page reloads.
+
+5. EASY MAINTENANCE
+-------------------
+
+Application is divided into smaller reusable components.
+
+6. STRONG COMMUNITY SUPPORT
+---------------------------
+
+Large developer community and ecosystem.
+
+7. CROSS-PLATFORM DEVELOPMENT
+-----------------------------
+
+Using React Native, mobile apps can be developed.
+
+ASCII REPRESENTATION:
+---------------------
+
+                 React
+                   |
+     +-------------+-------------+
+     |             |             |
+     v             v             v
+
+ Components   Virtual DOM    SPA
+
+     |             |             |
+     +-------------+-------------+
+                   |
+                   v
+
+          High Performance
+
+======================================================================
+END OF TASK 9
+======================================================================
+
+
+
+======================================================================
+TASK 10: WHAT DO YOU UNDERSTAND BY COMPONENT BASED ARCHITECTURE?
+======================================================================
+
+EXPLANATION:
+------------
+
+Component-Based Architecture is a design approach where the application
+is divided into small reusable components.
+
+Each component performs a specific task and can be reused throughout the
+application.
+
+EXAMPLES:
+----------
+
+✓ Header
+
+✓ Footer
+
+✓ Sidebar
+
+✓ Product Card
+
+✓ Login Form
+
+ASCII REPRESENTATION:
+---------------------
+
+                Application
+                      |
+        +-------------+-------------+
+        |             |             |
+        v             v             v
+
+      Header       Content      Footer
+
+                      |
+             +--------+--------+
+             |                 |
+             v                 v
+
+         Product         Product
+
+======================================================================
+BENEFITS
+======================================================================
+
+✓ Reusability
+
+✓ Maintainability
+
+✓ Scalability
+
+✓ Better Code Organization
+
+✓ Easier Testing
+
+CODE:
+------
+
+function Header() {
+
+   return <h1>Header</h1>;
+
+}
+
+function Footer() {
+
+   return <h1>Footer</h1>;
+
+}
+
+function App() {
+
+   return (
+
+      <>
+         <Header />
+         <Footer />
+      </>
+
+   );
+
+}
+
+======================================================================
+END OF TASK 10
+======================================================================
+
+
+
+======================================================================
+TASK 11: EXPLAIN LIFECYCLE OF REACT COMPONENT WITH DIAGRAM.
+DESCRIBE MOUNTING, UNMOUNTING ETC.
+======================================================================
+
+EXPLANATION:
+------------
+
+A React Component goes through different phases during its lifetime.
+
+The main lifecycle phases are:
+
+1. Mounting
+2. Updating
+3. Unmounting
+
+======================================================================
+1. MOUNTING
+======================================================================
+
+Mounting is the process of creating and inserting a component into the
+DOM.
+
+Occurs when the component loads for the first time.
+
+CODE:
+------
+
+import { useEffect } from 'react';
+
+function App() {
+
+   useEffect(() => {
+
+      console.log("Component Mounted");
+
+   }, []);
+
+   return <h1>Hello React</h1>;
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+Create Component
+
+       |
+       v
+
+Render Component
+
+       |
+       v
+
+Add To DOM
+
+       |
+       v
+
+Mounted
+
+======================================================================
+2. UPDATING
+======================================================================
+
+Occurs whenever:
+
+✓ State Changes
+
+✓ Props Change
+
+Component gets re-rendered.
+
+CODE:
+------
+
+import { useState } from 'react';
+
+function App() {
+
+   const [count, setCount] = useState(0);
+
+   return (
+
+      <button
+         onClick={() =>
+            setCount(count + 1)
+         }
+      >
+         {count}
+      </button>
+
+   );
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+State Change
+
+      |
+      v
+
+Re-render
+
+      |
+      v
+
+UI Updated
+
+======================================================================
+3. UNMOUNTING
+======================================================================
+
+Occurs when a component is removed from the DOM.
+
+CODE:
+------
+
+import { useEffect } from 'react';
+
+function App() {
+
+   useEffect(() => {
+
+      return () => {
+
+         console.log("Component Unmounted");
+
+      };
+
+   }, []);
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+Component Active
+
+       |
+       v
+
+Remove Component
+
+       |
+       v
+
+Unmounted
+
+======================================================================
+COMPLETE LIFECYCLE DIAGRAM
+======================================================================
+
+             Component Created
+
+                     |
+                     v
+
+               MOUNTING
+
+                     |
+                     v
+
+              Component UI
+
+                     |
+                     v
+
+                UPDATING
+
+         (State / Props Change)
+
+                     |
+                     v
+
+              Re-render UI
+
+                     |
+                     v
+
+               UNMOUNTING
+
+                     |
+                     v
+
+          Component Removed
+
+======================================================================
+END OF TASK 11
+======================================================================
+======================================================================
+TASK 12: WHAT ARE HOOKS IN REACT? WHY USE HOOKS?
+IMPORTANCE? WHAT ARE DIFFERENT TYPES OF HOOKS?
+======================================================================
+
+EXPLANATION:
+------------
+
+Hooks are special React functions that allow functional components to
+use React features such as:
+
+✓ State Management
+
+✓ Lifecycle Methods
+
+✓ Context
+
+✓ References (Refs)
+
+✓ Performance Optimizations
+
+Before Hooks were introduced, these features were mainly available in
+Class Components.
+
+Hooks make code simpler, reusable, and easier to maintain.
+
+======================================================================
+WHY DO WE USE HOOKS?
+======================================================================
+
+✓ Reduce Complex Class Components
+
+✓ Reuse Logic Between Components
+
+✓ Better Code Readability
+
+✓ Easier State Management
+
+✓ Access Lifecycle Features
+
+✓ Improve Maintainability
+
+======================================================================
+IMPORTANCE OF HOOKS
+======================================================================
+
+Without Hooks:
+
+Class Components
+       |
+       v
+
+State
+Lifecycle Methods
+Event Handling
+
+--------------------------------------------------
+
+With Hooks:
+
+Functional Components
+       |
+       v
+
+State
+Lifecycle Methods
+Event Handling
+Context
+
+All in a simple way
+
+======================================================================
+COMMONLY USED HOOKS
+======================================================================
+
+1. useState()
+
+2. useEffect()
+
+3. useContext()
+
+4. useRef()
+
+5. useMemo()
+
+6. useCallback()
+
+7. useReducer()
+
+======================================================================
+1. useState()
+======================================================================
+
+Used to manage component state.
+
+CODE:
+------
+
+import { useState } from 'react';
+
+function Counter() {
+
+   const [count, setCount] = useState(0);
+
+   return (
+
+      <button
+         onClick={() => setCount(count + 1)}
+      >
+         {count}
+      </button>
+
+   );
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+useState()
+
+      |
+
+ State Variable
+
+      |
+
+ UI Update
+
+======================================================================
+2. useEffect()
+======================================================================
+
+Used to handle side effects.
+
+Examples:
+
+✓ API Calls
+
+✓ Timers
+
+✓ Lifecycle Events
+
+CODE:
+------
+
+import { useEffect } from 'react';
+
+function App() {
+
+   useEffect(() => {
+
+      console.log("Component Mounted");
+
+   }, []);
+
+}
+
+ASCII REPRESENTATION:
+---------------------
+
+Component Load
+
+       |
+       v
+
+   useEffect()
+
+       |
+       v
+
+ Execute Logic
+
+======================================================================
+3. useContext()
+======================================================================
+
+Used to access shared data without prop drilling.
+
+CODE:
+------
+
+const UserContext = createContext();
+
+const user = useContext(UserContext);
+
+======================================================================
+4. useRef()
+======================================================================
+
+Used to directly access DOM elements.
+
+CODE:
+------
+
+const inputRef = useRef();
+
+<input ref={inputRef} />
+
+======================================================================
+5. useMemo()
+======================================================================
+
+Used to optimize expensive calculations.
+
+CODE:
+------
+
+const total = useMemo(() => {
+
+   return calculateTotal();
+
+}, []);
+
+======================================================================
+6. useCallback()
+======================================================================
+
+Used to memoize functions.
+
+CODE:
+------
+
+const handleClick = useCallback(() => {
+
+   console.log("Clicked");
+
+}, []);
+
+======================================================================
+7. useReducer()
+======================================================================
+
+Used for complex state management.
+
+CODE:
+------
+
+const [state, dispatch] =
+   useReducer(reducer, initialState);
+
+======================================================================
+ASCII REPRESENTATION
+======================================================================
+
+                   Hooks
+                     |
+     +-------+-------+-------+-------+
+     |       |       |       |       |
+     v       v       v       v       v
+
+ useState useEffect useRef useMemo useContext
+
+                     |
+                     v
+
+                useReducer
+
+======================================================================
+END OF TASK 12
+======================================================================
+
+
+
+======================================================================
+TASK 13: WHAT IS REACT REDUX ARCHITECTURE?
+EXPLAIN IN DETAIL.
+======================================================================
+
+EXPLANATION:
+------------
+
+Redux is a state management library used with React applications.
+
+Redux helps manage application-wide (global) state in a centralized
+location called the Store.
+
+Instead of passing data through multiple components (Prop Drilling),
+Redux allows components to access shared state directly.
+
+======================================================================
+WHY REDUX?
+======================================================================
+
+Without Redux:
+
+App
+
+ |
+ v
+
+Parent
+
+ |
+ v
+
+Child
+
+ |
+ v
+
+GrandChild
+
+ |
+ v
+
+Data Passed Through Props
+
+(Prop Drilling)
+
+--------------------------------------------------
+
+With Redux:
+
+All Components
+
+       |
+
+       v
+
+   Redux Store
+
+       |
+
+       v
+
+ Shared Data
+
+======================================================================
+MAIN COMPONENTS OF REDUX
+======================================================================
+
+1. Store
+
+2. Action
+
+3. Reducer
+
+4. Dispatch
+
+5. Selector
+
+======================================================================
+1. STORE
+======================================================================
+
+The Store is the central location where application state is stored.
+
+Example:
+
+User Data
+
+Cart Data
+
+Employee Data
+
+Theme Settings
+
+======================================================================
+2. ACTION
+======================================================================
+
+Action describes what happened.
+
+Example:
+---------
+
+{
+   type: "INCREMENT"
+}
+
+{
+   type: "ADD_EMPLOYEE"
+}
+
+======================================================================
+3. REDUCER
+======================================================================
+
+Reducer contains the logic that updates the state.
+
+CODE:
+------
+
+function counterReducer(
+   state = 0,
+   action
+) {
+
+   switch(action.type) {
+
+      case "INCREMENT":
+
+         return state + 1;
+
+      default:
+
+         return state;
+
+   }
+
+}
+
+======================================================================
+4. DISPATCH
+======================================================================
+
+Dispatch sends actions to Redux.
+
+CODE:
+------
+
+dispatch({
+   type: "INCREMENT"
+});
+
+======================================================================
+5. SELECTOR
+======================================================================
+
+Selectors are used to read data from the store.
+
+CODE:
+------
+
+const count = useSelector(
+   state => state.count
+);
+
+======================================================================
+COMPLETE REDUX FLOW
+======================================================================
+
+User Clicks Button
+
+        |
+        v
+
+ dispatch(action)
+
+        |
+        v
+
+      Action
+
+        |
+        v
+
+     Reducer
+
+        |
+        v
+
+      Store
+
+        |
+        v
+
+ Updated State
+
+        |
+        v
+
+ React Component
+
+        |
+        v
+
+ Updated UI
+
+======================================================================
+ASCII ARCHITECTURE
+======================================================================
+
++-----------------+
+| React Component |
++-----------------+
+         |
+         |
+
+ dispatch()
+
+         |
+         v
+
++-----------------+
+|     ACTION      |
++-----------------+
+         |
+         v
+
++-----------------+
+|    REDUCER      |
++-----------------+
+         |
+         v
+
++-----------------+
+|     STORE       |
++-----------------+
+         |
+         v
+
++-----------------+
+| useSelector()   |
++-----------------+
+         |
+         v
+
++-----------------+
+| Updated UI      |
++-----------------+
+
+======================================================================
+REACT + REDUX EXAMPLE
+======================================================================
+
+store.js
+
+import { configureStore } from '@reduxjs/toolkit';
+
+const store = configureStore({
+
+   reducer: {
+
+      counter: counterReducer
+
+   }
+
+});
+
+--------------------------------------------------
+
+CounterComponent.jsx
+
+import { useSelector, useDispatch } from 'react-redux';
+
+function Counter() {
+
+   const count =
+      useSelector(state => state.counter);
+
+   const dispatch = useDispatch();
+
+   return (
+
+      <button
+
+         onClick={() =>
+            dispatch({
+               type: "INCREMENT"
+            })
+         }
+
+      >
+
+         {count}
+
+      </button>
+
+   );
+
+}
+
+======================================================================
+ADVANTAGES OF REDUX
+======================================================================
+
+✓ Centralized State Management
+
+✓ Predictable State Changes
+
+✓ Avoids Prop Drilling
+
+✓ Easier Debugging
+
+✓ Better Code Organization
+
+✓ Suitable For Large Applications
+
+======================================================================
+ASCII SUMMARY
+======================================================================
+
+               React Application
+                        |
+                        v
+
+                  Redux Store
+
+                        ^
+                        |
+          +-------------+-------------+
+          |                           |
+
+       Actions                    Reducers
+
+          |                           |
+          +-------------+-------------+
+                        |
+                        v
+
+                  Updated State
+
+                        |
+                        v
+
+                    Components
+
+======================================================================
+END OF TASK 13
+======================================================================
