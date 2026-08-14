@@ -1,0 +1,28 @@
+$kind: http-request
+name: Login User
+method: POST
+url: '{{baseUrl}}/users/login'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "john@example.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+      pm.test("Login successful and token saved", function () {
+        var jsonData = pm.response.json();
+        pm.expect(jsonData.success).to.be.true;
+        pm.expect(jsonData.token).to.be.a("string");
+        pm.environment.set("token", jsonData.token);
+      });

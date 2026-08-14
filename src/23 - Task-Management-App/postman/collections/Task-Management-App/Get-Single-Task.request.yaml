@@ -1,0 +1,16 @@
+$kind: http-request
+name: Get Single Task
+method: GET
+url: '{{baseUrl}}/tasks/{{taskId}}'
+order: 6000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+      pm.test("Task returned with correct ID", function () {
+        var jsonData = pm.response.json();
+        pm.expect(jsonData.task._id).to.eql(pm.environment.get("taskId"));
+      });

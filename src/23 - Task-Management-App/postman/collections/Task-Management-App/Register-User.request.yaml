@@ -1,0 +1,39 @@
+$kind: http-request
+name: Register User
+method: POST
+url: '{{baseUrl}}/users/register'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "John Doe",
+      "email": "{{testEmail}}",
+      "password": "password123",
+      "age": 30
+    }
+scripts:
+  - type: beforeRequest
+    language: text/javascript
+    code: |-
+      // Generate a unique email each time to avoid "already registered" errors
+      var uniqueEmail = "testuser_" + Date.now() + "@example.com";
+      pm.environment.set("testEmail", uniqueEmail);
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+        pm.response.to.have.status(201);
+      });
+      pm.test("Response has token", function () {
+        var jsonData = pm.response.json();
+        pm.expect(jsonData.token).to.be.a("string");
+        pm.environment.set("token", jsonData.token);
+      });
+      pm.test("User registered successfully", function () {
+        var jsonData = pm.response.json();
+        pm.expect(jsonData.success).to.be.true;
+      });

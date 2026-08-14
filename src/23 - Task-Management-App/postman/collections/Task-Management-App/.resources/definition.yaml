@@ -1,0 +1,11 @@
+$kind: collection
+name: Task Management App
+description: |-
+  Complete API collection for the Task Management App.
+  Base URL: {{baseUrl}} (set in environment)
+  Auth: Bearer {{token}} (auto-set after login/register)
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{token}}'

@@ -1,0 +1,29 @@
+$kind: http-request
+name: Create Task
+method: POST
+url: '{{baseUrl}}/tasks'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "description": "Complete MongoDB project",
+      "priority": "high",
+      "dueDate": "2026-08-31"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status code is 201", function () {
+        pm.response.to.have.status(201);
+      });
+      pm.test("Task created and ID saved", function () {
+        var jsonData = pm.response.json();
+        pm.expect(jsonData.success).to.be.true;
+        pm.expect(jsonData.task._id).to.be.a("string");
+        pm.environment.set("taskId", jsonData.task._id);
+      });
